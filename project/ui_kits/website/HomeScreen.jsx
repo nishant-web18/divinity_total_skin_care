@@ -1,5 +1,7 @@
 import React from "react";
 import { autoFit } from "../../components/layout/grid.js";
+import { MobileCarousel } from "../../components/layout/MobileCarousel.jsx";
+import { useIsMobile } from "../../components/hooks/useMediaQuery.js";
 import { Hero } from "../../components/sections/Hero.jsx";
 import { SectionBand } from "../../components/sections/SectionBand.jsx";
 import { PastelCard } from "../../components/cards/PastelCard.jsx";
@@ -17,6 +19,7 @@ const bookingThread = [
 ];
 
 export function HomeScreen(props) {
+  const isMobile = useIsMobile();
   const medical = TREATMENT_GROUPS[0].items;
 
   /* The phone has a content-driven height, so the photo behind it is given a matching
@@ -66,13 +69,26 @@ export function HomeScreen(props) {
             <h2 style={{ fontSize: "var(--text-heading-lg)", lineHeight: "var(--leading-heading-lg)", letterSpacing: "var(--tracking-tight)", fontWeight: "var(--font-weight-medium)", color: "var(--color-indigo-bloom)", maxWidth: 620 }}>
               What people come in for
             </h2>
-            <Button variant="ghost" size="md" onClick={() => props.onNavigate("Treatments")}>All treatments</Button>
+            {isMobile ? null : (
+              <Button variant="ghost" size="md" onClick={() => props.onNavigate("Treatments")}>All treatments</Button>
+            )}
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: autoFit(300), gap: "var(--grid-gap)" }}>
+          <MobileCarousel
+            label="Treatments"
+            counter
+            accent="var(--color-indigo-bloom)"
+            gridStyle={{ display: "grid", gridTemplateColumns: autoFit(300), gap: "var(--grid-gap)" }}
+          >
             {SIGNATURE_TREATMENTS.map((t, i) => (
-              <PastelCard key={t.title} index={i} tag={<Tag tone={["mint", "sage", "sky", "cream", "lilac", "peach"][i]}>{t.tag}</Tag>} title={t.title} titleSize="var(--text-heading-sm)" body={t.body} />
+              <PastelCard key={t.title} index={i} tag={<Tag tone={["mint", "sage", "sky", "cream", "lilac", "peach"][i]}>{t.tag}</Tag>} title={t.title} titleSize="var(--text-heading-sm)" body={t.body} clamp={isMobile ? 3 : 0} />
             ))}
-          </div>
+          </MobileCarousel>
+          {/* Not full-width on purpose: the floating action stack occupies the bottom
+              right of the viewport, and a button that runs the full gutter passes
+              underneath it while scrolling. */}
+          {isMobile ? (
+            <Button variant="ghost" size="lg" style={{ alignSelf: "flex-start" }} onClick={() => props.onNavigate("Treatments")}>All treatments</Button>
+          ) : null}
           <p style={{ fontSize: "var(--text-body-sm)", color: "var(--color-aubergine)", margin: 0, maxWidth: "var(--measure)" }}>
             Medical information only. Suitability and the number of sessions are decided after an in-clinic examination, and results vary from person to person.
           </p>
@@ -134,14 +150,18 @@ export function HomeScreen(props) {
             </h2>
             <span style={{ fontSize: "var(--text-body-sm)", color: "var(--color-slate)" }}>Practo patient stories · names withheld until consent is in hand</span>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: autoFit(260), gap: "var(--grid-gap)" }}>
+          <MobileCarousel
+            label="Patient reviews"
+            accent="var(--color-canopy-green)"
+            gridStyle={{ display: "grid", gridTemplateColumns: autoFit(260), gap: "var(--grid-gap)" }}
+          >
             {REVIEWS.map((r) => (
-              <blockquote key={r.text} style={{ margin: 0, background: "var(--color-paper-white)", borderRadius: "var(--radius-cards-sm)", padding: "var(--card-padding)", display: "flex", flexDirection: "column", gap: "var(--spacing-12)" }}>
+              <blockquote key={r.text} style={{ margin: 0, background: "var(--color-paper-white)", borderRadius: "var(--radius-cards-sm)", padding: "var(--card-padding)", display: "flex", flexDirection: "column", gap: "var(--spacing-12)", height: "100%" }}>
                 <p style={{ fontSize: "var(--text-body)", lineHeight: "var(--leading-body)", color: "var(--color-ink-black)", margin: 0 }}>{r.text}</p>
-                <footer style={{ fontSize: "var(--text-caption)", color: "var(--color-slate)" }}>{r.context}</footer>
+                <footer style={{ fontSize: "var(--text-caption)", color: "var(--color-slate)", marginTop: "auto" }}>{r.context}</footer>
               </blockquote>
             ))}
-          </div>
+          </MobileCarousel>
         </div>
       </SectionBand>
 

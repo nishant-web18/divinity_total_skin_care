@@ -48,7 +48,14 @@ export function PastelCard(props) {
         </h3>
       ) : null}
       {props.body ? (
-        <p style={{ fontSize: "var(--text-body)", lineHeight: "var(--leading-body)", color: "var(--color-graphite)", margin: 0, maxWidth: "46ch" }}>
+        <p
+          style={Object.assign(
+            { fontSize: "var(--text-body)", lineHeight: "var(--leading-body)", color: "var(--color-graphite)", margin: 0, maxWidth: "46ch" },
+            /* Clamped only where the caller asks — a carousel needs equal-height cards,
+               a desktop grid does not, and the full text stays in the DOM either way. */
+            props.clamp ? { display: "-webkit-box", WebkitBoxOrient: "vertical", WebkitLineClamp: props.clamp, overflow: "hidden" } : null
+          )}
+        >
           {props.body}
         </p>
       ) : null}
