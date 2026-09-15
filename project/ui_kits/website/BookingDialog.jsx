@@ -2,7 +2,6 @@ import React from "react";
 import { Button } from "../../components/buttons/Button.jsx";
 import { Input } from "../../components/forms/Input.jsx";
 import { Tag } from "../../components/tags/Tag.jsx";
-import { Pending } from "./Chrome.jsx";
 import { CLINIC } from "./clinic.js";
 
 /* Brief §9: four fields, nothing more, with WhatsApp as the primary route. */
@@ -75,7 +74,6 @@ export function BookingDialog(props) {
               <Button variant="primary" size="lg" onClick={() => setSent(true)}>Request appointment</Button>
               <Button variant="ghost" size="lg" href={CLINIC.whatsappUrl}>WhatsApp instead</Button>
             </div>
-            <Pending inline>Live WhatsApp number</Pending>
           </React.Fragment>
         )}
       </div>

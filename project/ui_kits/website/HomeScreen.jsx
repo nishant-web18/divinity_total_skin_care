@@ -11,7 +11,6 @@ import { PhoneMockup } from "../../components/product/PhoneMockup.jsx";
 import { PhotoFrame } from "../../components/media/PhotoFrame.jsx";
 import { Tag } from "../../components/tags/Tag.jsx";
 import { Button } from "../../components/buttons/Button.jsx";
-import { Pending } from "./Chrome.jsx";
 import { BOOKING_THREAD, CLINIC, TRUST, SIGNATURE_TREATMENTS, DOCTORS, REVIEWS, TREATMENT_GROUPS } from "./clinic.js";
 
 
@@ -200,10 +199,17 @@ export function HomeScreen(props) {
             </div>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-12)" }}>
-            <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-ash)" }}>OPD hours</span>
-            <Pending>Day-by-day OPD hours — six directories list six different sets, so none is published here</Pending>
-            <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-ash)", marginTop: "var(--spacing-8)" }}>Phone</span>
-            <Pending>One WhatsApp-enabled clinic number, replacing five conflicting directory listings</Pending>
+            <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-ash)" }}>Phone</span>
+            <a href={CLINIC.telUrl} style={{ fontSize: "var(--text-heading-sm)", fontWeight: 500, color: "var(--color-paper-white)", textDecoration: "none", fontVariantNumeric: "tabular-nums", display: "inline-flex", alignItems: "center", minHeight: "var(--tap-target)", alignSelf: "flex-start" }}>{CLINIC.phoneDisplay}</a>
+            <a href={CLINIC.landlineTelUrl} style={{ fontSize: "var(--text-body)", color: "var(--color-mint-wash)", textDecoration: "none", fontVariantNumeric: "tabular-nums", display: "inline-flex", alignItems: "center", minHeight: "var(--tap-target)", alignSelf: "flex-start" }}>{CLINIC.landlineDisplay}</a>
+            <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-ash)", marginTop: "var(--spacing-8)" }}>OPD hours</span>
+            {/* Timings are not published: five directories give five different sets and
+                none is verified. Asking is more useful to a patient than a wrong hour. */}
+            <span style={{ fontSize: "var(--text-body)", lineHeight: "var(--leading-body)", color: "var(--color-mint-wash)" }}>
+              Message on WhatsApp before you travel and the clinic will tell you the next slot.
+            </span>
+            <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-ash)", marginTop: "var(--spacing-8)" }}>Payments</span>
+            <span style={{ fontSize: "var(--text-body)", color: "var(--color-mint-wash)" }}>{CLINIC.payments}</span>
           </div>
         </div>
       </SectionBand>

@@ -5,10 +5,7 @@ import { ProductCard } from "../../components/cards/ProductCard.jsx";
 import { Tag } from "../../components/tags/Tag.jsx";
 import { Button } from "../../components/buttons/Button.jsx";
 import { Input } from "../../components/forms/Input.jsx";
-import { Pending } from "./Chrome.jsx";
 import { CLINIC, LOCALITIES } from "./clinic.js";
-
-const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 export function ContactScreen(props) {
   const [sent, setSent] = React.useState(false);
@@ -36,20 +33,15 @@ export function ContactScreen(props) {
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-16)", minWidth: 0 }}>
             <div style={{ background: "rgba(255,255,255,0.08)", borderRadius: "var(--radius-cards-sm)", padding: "var(--card-padding)", display: "flex", flexDirection: "column", gap: "var(--spacing-8)" }}>
               <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-ash)" }}>Phone</span>
-              <span style={{ fontSize: "var(--text-heading-sm)", fontWeight: 500, color: "var(--color-paper-white)", fontVariantNumeric: "tabular-nums" }}>{CLINIC.phoneDisplay}</span>
-              <Pending>One WhatsApp-enabled number for the site, schema and Google Business Profile</Pending>
+              <a href={CLINIC.telUrl} style={{ fontSize: "var(--text-heading-sm)", fontWeight: 500, color: "var(--color-paper-white)", textDecoration: "none", fontVariantNumeric: "tabular-nums", display: "inline-flex", alignItems: "center", minHeight: "var(--tap-target)", alignSelf: "flex-start" }}>{CLINIC.phoneDisplay}</a>
+              <a href={CLINIC.landlineTelUrl} style={{ fontSize: "var(--text-body)", color: "var(--color-mint-wash)", textDecoration: "none", fontVariantNumeric: "tabular-nums", display: "inline-flex", alignItems: "center", minHeight: "var(--tap-target)", alignSelf: "flex-start" }}>{CLINIC.landlineDisplay}</a>
             </div>
             <div style={{ background: "rgba(255,255,255,0.08)", borderRadius: "var(--radius-cards-sm)", padding: "var(--card-padding)", display: "flex", flexDirection: "column", gap: "var(--spacing-12)" }}>
               <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-ash)" }}>OPD hours</span>
-              <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                {DAYS.map((d) => (
-                  <div key={d} style={{ display: "flex", justifyContent: "space-between", gap: 16, fontSize: "var(--text-body-sm)", color: "var(--color-paper-white)" }}>
-                    <span>{d}</span>
-                    <span style={{ color: "var(--color-ash)" }}>— : —</span>
-                  </div>
-                ))}
-              </div>
-              <Pending>Exact hours per day, and whether Sunday is open</Pending>
+              {/* Deliberately no day grid: the directories disagree and none is verified. */}
+              <span style={{ fontSize: "var(--text-body-sm)", lineHeight: 1.5, color: "var(--color-mint-wash)" }}>
+                Timings vary by doctor and by day. WhatsApp the clinic before you travel and you will be told the next available slot.
+              </span>
             </div>
           </div>
         </div>
@@ -93,7 +85,6 @@ export function ContactScreen(props) {
                 <p style={{ margin: 0, fontSize: "var(--text-body-sm)", lineHeight: "var(--leading-body-sm)", color: "var(--color-graphite)" }}>
                   From KL Saini Cricket Stadium, take Madhyam Marg and turn into Kaveri Path. The clinic is on the left, at 21/280.
                 </p>
-                <Pending inline>Parking &amp; access details</Pending>
               </div>
             </ProductCard>
 

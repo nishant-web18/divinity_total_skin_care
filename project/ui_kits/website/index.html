@@ -1,5 +1,5 @@
 <!-- @dsCard group="Website" viewport="1280x760" name="Divinity Total Skin Care" subtitle="Clinic site: hero, treatments, doctors, fees & FAQ, contact + sticky WhatsApp bar" -->
-<!-- @startingPoint section="Website" subtitle="Dermatology clinic site — five screens, sticky conversion bar, pending-fact markers" viewport="1280x760" -->
+<!-- @startingPoint section="Website" subtitle="Dermatology clinic site — five screens, mobile action stack, swipeable treatment cards" viewport="1280x760" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,8 +81,14 @@
     "addressCountry": "IN"
   },
   "geo": { "@type": "GeoCoordinates", "latitude": 26.8754787, "longitude": 75.7529494 },
-  "telephone": "+91-XXXXXXXXXX",
+  "telephone": "+91-9001764046",
   "url": "https://REPLACE-WITH-DOMAIN",
+  "sameAs": [
+    "https://www.instagram.com/divinity_total_skincare/",
+    "https://www.facebook.com/drvinishabaliyan/",
+    "https://www.practo.com/jaipur/clinic/divnity-total-skin-care-mansarovar"
+  ],
+  "paymentAccepted": "Cash, Credit Card, Debit Card, Paytm, Google Pay",
   "foundingDate": "2013",
   "employee": [
     { "@type": "Physician", "name": "Dr. Prateek Manjul", "medicalSpecialty": "Dermatology" },
@@ -90,8 +96,10 @@
   ]
 }
 </script>
-<!-- openingHoursSpecification and aggregateRating are deliberately absent: hours are
-     unconfirmed, and a rating must come from a live reviews source, never hardcoded. -->
+<!-- openingHoursSpecification stays out: five directories publish five different sets
+     and none is confirmed by the clinic, so no hours are asserted anywhere on the site.
+     aggregateRating stays out too — the 4.5/735 figure is shown in the page with its
+     source and date, but a rating in schema must come from a live feed, never a literal. -->
 </head>
 <body>
 <div id="root"><!-- skeleton: brand bands paint instantly, React replaces this on mount -->

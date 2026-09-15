@@ -5,7 +5,6 @@ import { PastelCard } from "../../components/cards/PastelCard.jsx";
 import { PhotoFrame } from "../../components/media/PhotoFrame.jsx";
 import { Tag } from "../../components/tags/Tag.jsx";
 import { Button } from "../../components/buttons/Button.jsx";
-import { Pending } from "./Chrome.jsx";
 import { DOCTORS, CLINIC } from "./clinic.js";
 
 function Block(props) {
@@ -84,13 +83,17 @@ export function DoctorsScreen(props) {
                 </div>
               </Block>
 
-              <Block label="Being verified before publication">
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--spacing-8)" }}>
-                  {d.pending.map((p) => (
-                    <Pending key={p} inline>{p}</Pending>
-                  ))}
-                </div>
-              </Block>
+              {d.languages ? (
+                <Block label="Speaks">
+                  <span style={{ fontSize: "var(--text-body)", color: "var(--color-graphite)" }}>{d.languages.join(", ")}</span>
+                </Block>
+              ) : null}
+
+              {d.since ? (
+                <Block label="At the clinic">
+                  <span style={{ fontSize: "var(--text-body)", color: "var(--color-graphite)" }}>{d.since}</span>
+                </Block>
+              ) : null}
 
               <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--spacing-12)" }}>
                 <Button variant="primary" size="lg" onClick={props.onBook}>Book with {d.name.split(" ")[1]}</Button>

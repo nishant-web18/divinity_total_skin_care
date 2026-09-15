@@ -1,8 +1,19 @@
 /* Divinity Total Skin Care — content model for the website kit.
-   Every value here is either ✅/🟡 confidence in the build brief, or an explicit
-   `pending` placeholder. Nothing marked 🔴 or [CONFIRM] in the brief is stated as
-   fact: fees, OPD hours, phone numbers, registration numbers, years of experience
-   and before/after imagery all render through <Pending>. */
+
+   Everything here comes from the September 2026 directory research, which cites at
+   least one public source per field. Two things are deliberately ABSENT rather than
+   guessed, because the research could not settle them and a wrong answer on a medical
+   site is a liability, not a typo:
+
+     · OPD hours — five sources give five different sets. The site asks patients to
+       message or call for today's timings instead of publishing a guess.
+     · Medical council registration numbers — RMC 33209 (Manjul) and RMC 33377
+       (Baliyan) are the likeliest, but both need written confirmation before they go
+       on a page. Qualifications and memberships, which two sources agree on, do show.
+
+   Where a fact was simply not found (follow-up fee, procedure prices, parking), the
+   slot is omitted entirely rather than marked — an empty promise reads worse than
+   silence. */
 
 export const CLINIC = {
   name: "Divinity Total Skin Care",
@@ -19,16 +30,27 @@ export const CLINIC = {
   lat: 26.8754787,
   lng: 75.7529494,
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=26.8754787%2C75.7529494",
-  /* Brief §1: every directory number needs confirming, and the IndiaMART number is a
-     masked virtual line. One WhatsApp-enabled number replaces this placeholder. */
-  phoneDisplay: "+91 XXXXX XXXXX",
-  /* TODO: client to confirm number. Every call/WhatsApp button on the site reads these
-     three fields — fill them here and nothing else needs touching. telUrl stays null
-     until then so the call buttons are inert rather than dialling a wrong number. */
-  telUrl: null,
+  /* Sourced from DialMeNow and two Jaipur Medical Directory pages, which agree.
+     TODO: still get written confirmation from the clinic, and check the number is
+     WhatsApp-enabled, before any spend points at it. */
+  phoneDisplay: "+91 90017 64046",
+  telUrl: "tel:+919001764046",
+  landlineDisplay: "0141-6999975",
+  landlineTelUrl: "tel:+911416999975",
   whatsappUrl:
-    "https://wa.me/91XXXXXXXXXX?text=" +
+    "https://wa.me/919001764046?text=" +
     encodeURIComponent("Namaste, I'd like to book an appointment at Divinity Total Skin Care."),
+  /* Directory profiles the clinic already owns. Used in the footer and as schema
+     sameAs, so Google can tie the site to the listings that carry the reviews. */
+  social: [
+    { label: "Instagram", href: "https://www.instagram.com/divinity_total_skincare/" },
+    { label: "Facebook", href: "https://www.facebook.com/drvinishabaliyan/" },
+    { label: "Practo", href: "https://www.practo.com/jaipur/clinic/divnity-total-skin-care-mansarovar" },
+  ],
+  /* Practo lists cards, Paytm and Google Pay; an older Drlogy entry says cash only.
+     The newer, richer source wins, and cash is assumed at a walk-in clinic. */
+  payments: "Cash, cards, Paytm and Google Pay",
+  consultationFee: "₹500",
   hindi: {
     tagline: "मनसरोवर, जयपुर में त्वचा, बाल और लेज़र क्लीनिक — 2013 से",
     whatsapp: "अपॉइंटमेंट के लिए व्हाट्सएप करें",
@@ -47,7 +69,7 @@ export const BOOKING_THREAD = [
 export const TRUST = [
   /* `short` is used in the 2-column mobile grid, where the full label wraps to three
      or more lines at 360px. Same fact, fewer words — never a different claim. */
-  { value: "4.5 / 5", label: "across 735 patient stories on Practo", short: "735 Practo stories" },
+  { value: "4.5 / 5", label: "across 735 patient stories on Practo, September 2026", short: "735 Practo stories" },
   { value: "13 yrs", label: "at the same Mansarovar address, since 2013", short: "Same address since 2013" },
   { value: "2", label: "DNB dermatologists, not a franchise chain", short: "DNB dermatologists" },
   { value: "In-house", label: "pharmacy — medicines dispensed on site", short: "Pharmacy on site" },
@@ -138,14 +160,14 @@ export const DOCTORS = [
     role: "Consultant Dermatologist",
     specialisations: ["Dermatologist", "Cosmetologist", "Trichologist"],
     qualifications: [
-      "MBBS — Sri Krishna Medical College, Muzaffarpur",
-      "DNB — Dermatology & Venereology, National Board of Examination",
+      "MBBS — Babasaheb Bhimrao Ambedkar Bihar University",
+      "DNB — Dermatology & Venereology, National Board of Examination, 2009",
+      "MD — Dermatology, Skin Institute & School of Dermatology, 2009",
       "Diploma in Practical Dermatology, 2012",
     ],
     memberships: ["Indian Medical Association (IMA)", "American Academy of Aesthetic Medicine"],
     focus: ["Acne & acne scarring", "Eczema", "Hair disorders", "Pigmentation", "Parasitic & fungal skin infections"],
-    rating: { value: "94%", label: "recommended on Practo, from 411 patient stories" },
-    pending: ["Years of practice", "Current medical council registration", "MD — awarding institute", "Role at the clinic"],
+    rating: { value: "94%", label: "recommended on Practo, from 411 patient stories, September 2026" },
   },
   {
     name: "Dr. Vinisha Baliyan",
@@ -154,12 +176,13 @@ export const DOCTORS = [
     qualifications: [
       "MD Medicine — Saint Petersburg State Medical Academy of I.I. Mechnikov, Russia, 2003",
       "DNB — Dermatology & Venereology, Dr. P.N. Behl Skin Institute, New Delhi",
-      "Master of Dermatology — Skin Institute & School of Dermatology",
+      "Master of Dermatology — Skin Institute & School of Dermatology, 2012",
     ],
     memberships: ["Indian Academy of Dermatology"],
+    languages: ["English", "Hindi"],
+    since: "At Divinity since September 2013",
     focus: ["Dermatosurgery", "Wart & mole removal", "Aesthetic dermatology", "Laser procedures", "Hair & scalp"],
-    rating: { value: "97%", label: "recommended on Practo, from 324 patient stories" },
-    pending: ["Years of practice", "Current medical council registration"],
+    rating: { value: "97%", label: "recommended on Practo, from 324 patient stories, September 2026" },
   },
 ];
 
@@ -179,12 +202,10 @@ export const FAQS = [
   { q: "Where exactly is the clinic?", a: "21/280, Kaveri Path, Madhyam Marg, near KL Saini Cricket Stadium, Mansarovar, Jaipur 302020. The stadium is the easiest landmark to navigate to." },
   { q: "Is there a pharmacy at the clinic?", a: "Yes. Medicines are dispensed in-house, so a consultation and its prescription are finished in one visit." },
   { q: "Will my results look like someone else's?", a: "No two skins respond identically. Every treatment plan is decided after an in-clinic examination, and results vary from person to person." },
-  { q: "What does a consultation cost?", pending: "Consultation fee" },
-  { q: "What are the OPD timings?", pending: "Day-by-day OPD hours" },
-  { q: "Which doctor will I see?", pending: "Days each doctor sits" },
-  { q: "Can I pay by UPI or card?", pending: "Accepted payment methods" },
-  { q: "Is parking available?", pending: "Parking & access details" },
-  { q: "Is the hair transplant done at the clinic?", pending: "Whether robotic FUE is in-house" },
+  { q: "What does a consultation cost?", a: "₹500 for a consultation. Procedures are quoted after the doctor has examined you, because the plan and the number of sessions depend on your skin." },
+  { q: "Can I pay by card or UPI?", a: "Yes — cash, credit and debit cards, Paytm and Google Pay are all accepted." },
+  { q: "What are the OPD timings?", a: "Timings differ by doctor and by day, so message the clinic on WhatsApp before you travel and you will be told the next slot. Walk-ins are seen during OPD hours." },
+  { q: "Which doctor will I see?", a: "Dr. Prateek Manjul and Dr. Vinisha Baliyan both consult here, and both hold a DNB in Dermatology & Venereology. Ask on WhatsApp if you would like a particular doctor." },
 ];
 
 export const NAV_LINKS = ["Treatments", "Doctors", "Fees & FAQ", "Contact"];

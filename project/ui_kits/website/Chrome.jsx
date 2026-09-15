@@ -1,43 +1,10 @@
 import React from "react";
 
-/* Marks a fact the build brief flags as unconfirmed. A medical site cannot publish a
-   guessed fee, timing, registration number or phone line, so the layout shows the slot
-   and names what is missing instead of inventing a value. */
-export function Pending(props) {
-  const inline = !!props.inline;
-  return (
-    <span
-      style={Object.assign(
-        {
-          display: "inline-flex",
-          alignItems: "center",
-          gap: "var(--spacing-8)",
-          background: "var(--color-peach-wash)",
-          color: "var(--color-deep-teal)",
-          border: "1px dashed var(--color-coral-pulse)",
-          borderRadius: inline ? "var(--radius-tags)" : "var(--radius-icons)",
-          padding: inline ? "3px 10px" : "8px 12px",
-          fontFamily: "var(--font-dm-sans)",
-          fontFeatureSettings: "var(--font-features)",
-          /* These chips carry real sentences naming what is still unconfirmed, so
-             they read as content, not as a caption — 14px, not the 12px floor. */
-          fontSize: "var(--text-body-sm)",
-          fontWeight: "var(--font-weight-semibold)",
-          lineHeight: 1.35,
-        },
-        props.style
-      )}
-    >
-      {props.children || "Confirming with the clinic"}
-    </span>
-  );
-}
-
 /* Brief §9: sticky Call · WhatsApp · Directions bar. 80%+ of this clinic's traffic is
    mobile, so the three conversion actions are always one tap away. */
 export function StickyBar(props) {
   const items = [
-    { label: "Call the clinic", sub: props.phone, href: "tel:", tone: "ghost" },
+    { label: "Call the clinic", sub: props.phone, href: props.telUrl || "tel:", tone: "ghost" },
     { label: "WhatsApp", sub: props.hindi, href: props.whatsappUrl, tone: "primary" },
     { label: "Directions", sub: "KL Saini Stadium", href: props.mapsUrl, tone: "ghost" },
   ];

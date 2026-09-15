@@ -4,8 +4,7 @@ import { SectionBand } from "../../components/sections/SectionBand.jsx";
 import { PastelCard } from "../../components/cards/PastelCard.jsx";
 import { Tag } from "../../components/tags/Tag.jsx";
 import { Button } from "../../components/buttons/Button.jsx";
-import { Pending } from "./Chrome.jsx";
-import { FAQS } from "./clinic.js";
+import { CLINIC, FAQS } from "./clinic.js";
 
 export function FeesFaqScreen(props) {
   return (
@@ -18,20 +17,20 @@ export function FeesFaqScreen(props) {
               What it costs, <span style={{ fontWeight: "var(--font-weight-bold)" }}>before</span> you call
             </h1>
             <p style={{ fontSize: "var(--text-body-lg)", lineHeight: "var(--leading-body-lg)", color: "var(--color-aubergine)", margin: 0, maxWidth: 520 }}>
-              A published fee and a starting price for the common procedures cuts the phone calls that were never going to book, and earns the trust of the ones that will.
+              A published consultation fee cuts the calls that were never going to book, and earns the trust of the ones that will. Procedures are quoted once a doctor has seen the skin.
             </p>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--grid-gap)" }}>
             <PastelCard tone="sage" title="Consultation" titleSize="var(--text-heading-sm)">
-              <Pending>Consultation fee — directories show two different figures, so neither is published</Pending>
-              <span style={{ fontSize: "var(--text-body-sm)", color: "var(--color-graphite)" }}>First visit and follow-up will be listed separately once confirmed.</span>
+              <span style={{ fontSize: "var(--text-heading)", lineHeight: 1.1, fontWeight: 700, color: "var(--color-canopy-green)" }}>{CLINIC.consultationFee}</span>
+              <span style={{ fontSize: "var(--text-body-sm)", color: "var(--color-graphite)" }}>Per consultation. {CLINIC.payments}.</span>
             </PastelCard>
             <PastelCard tone="sky" title="Procedures" titleSize="var(--text-heading-sm)">
               <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-8)" }}>
                 {["Laser hair removal", "Chemical peels", "Robotic FUE hair transplant"].map((p) => (
                   <div key={p} style={{ display: "flex", flexWrap: "wrap", gap: "var(--spacing-8)", alignItems: "center", justifyContent: "space-between", background: "var(--color-paper-white)", borderRadius: "var(--radius-icons)", padding: "10px 12px" }}>
                     <span style={{ fontSize: "var(--text-body-sm)", fontWeight: 500, color: "var(--color-canopy-green)" }}>{p}</span>
-                    <Pending inline>Starting from ₹—</Pending>
+                    <span style={{ fontSize: "var(--text-body-sm)", color: "var(--color-slate)" }}>Quoted after consultation</span>
                   </div>
                 ))}
               </div>
@@ -59,9 +58,7 @@ export function FeesFaqScreen(props) {
                     <span aria-hidden="true" style={{ color: "var(--color-slate)", fontSize: 20, lineHeight: 1, flex: "0 0 auto" }}>+</span>
                   </summary>
                   <div style={{ paddingBottom: 12 }}>
-                    {f.pending ? <Pending>{f.pending} — confirming with the clinic</Pending> : (
-                      <p style={{ margin: 0, fontSize: "var(--text-body)", lineHeight: "var(--leading-body)", color: "var(--color-graphite)", maxWidth: "var(--measure)" }}>{f.a}</p>
-                    )}
+                    <p style={{ margin: 0, fontSize: "var(--text-body)", lineHeight: "var(--leading-body)", color: "var(--color-graphite)", maxWidth: "var(--measure)" }}>{f.a}</p>
                   </div>
                 </details>
               ))}

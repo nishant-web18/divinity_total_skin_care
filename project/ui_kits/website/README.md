@@ -27,17 +27,24 @@ This runs `scripts/build-website.mjs` (esbuild) against `main.jsx`, the bundle's
 | `FeesFaqScreen.jsx` | Fees & FAQ | Consultation and procedure pricing slots, ten patient questions |
 | `ContactScreen.jsx` | Contact & book | Address, phone, day-by-day hours table, four-field appointment form, directions from the stadium, nearby localities |
 | `BookingDialog.jsx` | Booking | Four fields max, WhatsApp as the primary route |
-| `Chrome.jsx` | Chrome | `StickyBar` (Call · WhatsApp · Directions) and `Pending` |
+| `Chrome.jsx` | Chrome | `StickyBar` (Call · WhatsApp · Directions), shown from 768px |
 | `clinic.js` | Content | Every fact on the site, in one file |
 | `Footer.jsx`, `App.jsx` | Shell | Footer with NAP + disclaimer, nav and dialog state |
 
-## The `Pending` marker
+## What is published, and what is deliberately absent
 
-The brief forbids publishing anything it tagged 🔴 or **[CONFIRM]** on a live medical site. Rather than inventing values, the layout reserves the slot and names what is missing — peach chip, dashed coral border:
+Content comes from the September 2026 directory research, every field with at least one
+public source. Two things are **absent rather than guessed**, because publishing a wrong
+one on a medical site is a liability:
 
-Phone number · OPD hours (six sources, six answers) · consultation fee (₹300 vs ₹500) · procedure price ranges · both doctors' years of practice and registration numbers · Dr. Manjul's MD institute and role at the clinic · payment methods · parking · whether robotic FUE is in-house · before/after photos.
+- **OPD hours.** Five directories give five different sets. The site asks patients to
+  message before travelling instead of asserting a timetable.
+- **Medical council registration numbers.** RMC 33209 and RMC 33377 are the likeliest
+  but need written confirmation. Qualifications and memberships, which multiple sources
+  agree on, are published.
 
-Fill these from `clinic.js` — `phoneDisplay`, `whatsappUrl`, `FAQS[].pending`, `DOCTORS[].pending` — and the chips disappear as real content replaces them.
+Anything simply not found — follow-up fee, procedure prices, parking, before/after
+photography — has its slot removed, not marked. Fill `clinic.js` and it reappears.
 
 ## Also built in from the brief
 
@@ -49,4 +56,13 @@ Fill these from `clinic.js` — `phoneDisplay`, `whatsappUrl`, `FAQS[].pending`,
 
 ## Still needed from the client
 
-Answers to the brief's §12 list — items 1–7 especially — plus clinic photography (every `PhotoFrame` is a placeholder) and a decision on the domain.
+- **Written confirmation of the phone number.** `+91 90017 64046` comes from three
+  directory pages that agree, but nothing client-confirmed — verify before any ad spend
+  points at it, and check it is WhatsApp-enabled.
+- **Day-by-day OPD hours**, and whether Sunday is open.
+- **Registration numbers in writing** for both doctors.
+- **Follow-up fee and indicative procedure prices.**
+- **Clinic photography** — every `PhotoFrame` is still a placeholder — and consented
+  before/after images if that section is ever to ship.
+- **The real logo file.** `components/brand/Logo.jsx` is a reconstruction drawn from a
+  screenshot, not the clinic's vector.

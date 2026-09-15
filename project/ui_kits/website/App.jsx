@@ -68,7 +68,7 @@ export function App() {
       {isMobile ? (
         <MobileActionStack page={page} hidden={booking} whatsappUrl={CLINIC.whatsappUrl} mapsUrl={CLINIC.mapsUrl} telUrl={CLINIC.telUrl} />
       ) : (
-        <StickyBar phone={CLINIC.phoneDisplay} hindi={CLINIC.hindi.whatsapp} whatsappUrl={CLINIC.whatsappUrl} mapsUrl={CLINIC.mapsUrl} />
+        <StickyBar phone={CLINIC.phoneDisplay} telUrl={CLINIC.telUrl} hindi={CLINIC.hindi.whatsapp} whatsappUrl={CLINIC.whatsappUrl} mapsUrl={CLINIC.mapsUrl} />
       )}
       <BookingDialog open={booking} onClose={() => setBooking(false)} />
     </div>

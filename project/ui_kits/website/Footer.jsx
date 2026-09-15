@@ -17,7 +17,7 @@ export function Footer(props) {
               <div key={l}>{l}</div>
             ))}
           </address>
-          <span style={{ fontSize: "var(--text-body-sm)", color: "var(--color-graphite)", fontVariantNumeric: "tabular-nums" }}>{CLINIC.phoneDisplay}</span>
+          <a href={CLINIC.telUrl} style={{ fontSize: "var(--text-body-sm)", color: "var(--color-graphite)", textDecoration: "none", fontVariantNumeric: "tabular-nums", display: "inline-flex", alignItems: "center", minHeight: "var(--tap-target)", alignSelf: "flex-start" }}>{CLINIC.phoneDisplay}</a>
           <a href={CLINIC.mapsUrl} target="_blank" rel="noreferrer" style={{ fontSize: "var(--text-body-sm)", fontWeight: 600, display: "inline-flex", alignItems: "center", minHeight: "var(--tap-target)", alignSelf: "flex-start" }}>Directions</a>
         </div>
 
@@ -38,7 +38,13 @@ export function Footer(props) {
         ))}
 
         <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-12)", minWidth: 0, flex: "1 1 200px" }}>
-          <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-slate)" }}>Serving</span>
+          <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-slate)" }}>Find us online</span>
+          <span style={{ display: "flex", flexWrap: "wrap", gap: "var(--spacing-16)" }}>
+            {CLINIC.social.map((l) => (
+              <a key={l.label} href={l.href} target="_blank" rel="noreferrer" style={{ fontSize: "var(--text-body-sm)", color: "var(--color-canopy-green)", fontWeight: 600, display: "inline-flex", alignItems: "center", minHeight: "var(--tap-target)" }}>{l.label}</a>
+            ))}
+          </span>
+          <span style={{ fontSize: "var(--text-caption)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-slate)", marginTop: "var(--spacing-8)" }}>Serving</span>
           <span style={{ fontSize: "var(--text-body-sm)", lineHeight: 1.5, color: "var(--color-graphite)" }}>
             Mansarovar · Madhyam Marg · Shipra Path · Nirman Nagar · Gopalpura Bypass · Vaishali Nagar
           </span>

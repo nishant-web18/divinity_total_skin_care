@@ -7,7 +7,6 @@ import { ProductCard } from "../../components/cards/ProductCard.jsx";
 import { PhotoFrame } from "../../components/media/PhotoFrame.jsx";
 import { Tag } from "../../components/tags/Tag.jsx";
 import { Button } from "../../components/buttons/Button.jsx";
-import { Pending } from "./Chrome.jsx";
 import { SIGNATURE_TREATMENTS, TREATMENT_GROUPS, CLINIC_WORDS } from "./clinic.js";
 
 export function TreatmentsScreen(props) {
@@ -47,7 +46,6 @@ export function TreatmentsScreen(props) {
               <PastelCard key={t.title} index={i} tag={<Tag tone={["mint", "sage", "sky", "cream", "lilac", "peach"][i]}>{t.tag}</Tag>} title={t.title} titleSize="var(--text-heading-sm)" body={t.body}>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--spacing-8)", alignItems: "center" }}>
                   <Button variant="primary" size="sm" onClick={props.onBook}>Ask about this</Button>
-                  <Pending inline>Indicative price range</Pending>
                 </div>
               </PastelCard>
             ))}
@@ -94,14 +92,9 @@ export function TreatmentsScreen(props) {
                 </div>
               ))}
             </div>
-            <Pending>Whether robotic FUE is performed in-house or referred out</Pending>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-16)", minWidth: 0 }}>
             <PhotoFrame ratio="4 / 5" placeholder="Procedure room / laser equipment — photo shoot pending" />
-            <div style={{ background: "var(--color-paper-white)", borderRadius: "var(--radius-cards-sm)", padding: "var(--card-padding)", display: "flex", flexDirection: "column", gap: "var(--spacing-8)" }}>
-              <span style={{ fontSize: "var(--text-body-sm)", fontWeight: 600, color: "var(--color-canopy-green)" }}>Before &amp; after results</span>
-              <Pending>Consented patient photographs — published only with written permission</Pending>
-            </div>
           </div>
         </div>
       </SectionBand>
