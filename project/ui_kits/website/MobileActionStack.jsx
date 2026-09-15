@@ -81,7 +81,10 @@ export function MobileActionStack(props) {
         alignItems: "flex-end",
         gap: 12,
         opacity: shown ? 1 : 0,
-        transform: reduceMotion ? "none" : shown ? "translateX(0)" : "translateX(24px)",
+        /* Slides from inside the gutter, never past it: a hidden element parked
+           beyond the right edge still counts as horizontal overflow. */
+        transform: reduceMotion ? "none" : shown ? "translateX(0)" : "translateX(12px)",
+        visibility: shown ? "visible" : "hidden",
         pointerEvents: shown ? "auto" : "none",
         transition: reduceMotion ? "opacity 120ms linear" : "opacity 180ms cubic-bezier(.2,0,.2,1), transform 180ms cubic-bezier(.2,0,.2,1)",
       }}

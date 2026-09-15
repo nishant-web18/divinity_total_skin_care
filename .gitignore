@@ -1,4 +1,7 @@
 node_modules/
 .audit/
+# Screenshot scratch from responsive/desktop-parity checks.
+.base/
+.after/
 # Deploy output, assembled by `npm run build` on the host.
 /dist/

@@ -22,6 +22,19 @@
   @media (max-width: 900px) {
     body { --page-gutter: 24px; --section-padding-y: 48px; }
   }
+  /* Display type tuned for a desk becomes a wall of letters on a phone: 48px headings
+     were eating whole screens. Retuned at the token, so every section follows and
+     nothing above 768px moves. */
+  @media (max-width: 767px) {
+    body {
+      --text-display: clamp(32px, 9vw, 42px);
+      --text-heading-lg: clamp(30px, 8vw, 36px);
+      --text-heading: clamp(26px, 7vw, 32px);
+      --section-padding-y: 52px;
+      --spacing-64: 40px;
+      --spacing-48: 32px;
+    }
+  }
   @media (max-width: 380px) {
     body { --page-gutter: 16px; --card-padding: 20px; --card-padding-lg: 20px; }
   }

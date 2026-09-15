@@ -37,10 +37,12 @@ export const CLINIC = {
 };
 
 export const TRUST = [
-  { value: "4.5 / 5", label: "across 735 patient stories on Practo" },
-  { value: "13 yrs", label: "at the same Mansarovar address, since 2013" },
-  { value: "2", label: "DNB dermatologists, not a franchise chain" },
-  { value: "In-house", label: "pharmacy — medicines dispensed on site" },
+  /* `short` is used in the 2-column mobile grid, where the full label wraps to three
+     or more lines at 360px. Same fact, fewer words — never a different claim. */
+  { value: "4.5 / 5", label: "across 735 patient stories on Practo", short: "735 Practo stories" },
+  { value: "13 yrs", label: "at the same Mansarovar address, since 2013", short: "Same address since 2013" },
+  { value: "2", label: "DNB dermatologists, not a franchise chain", short: "DNB dermatologists" },
+  { value: "In-house", label: "pharmacy — medicines dispensed on site", short: "Pharmacy on site" },
 ];
 
 /* Brief §8: the six money treatments that get their own pages. */

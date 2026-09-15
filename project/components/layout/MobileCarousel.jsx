@@ -93,7 +93,7 @@ export function MobileCarousel(props) {
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: "var(--spacing-12)", marginTop: "var(--spacing-16)" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+        <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap" }}>
           {items.map((_, i) => (
             <button
               key={i}
@@ -104,8 +104,8 @@ export function MobileCarousel(props) {
               style={{
                 /* The dot is the visible mark; the button around it carries the 44px
                    target the finger actually needs. */
-                width: 24,
-                height: 44,
+                width: "var(--tap-target)",
+                height: "var(--tap-target)",
                 padding: 0,
                 border: "none",
                 background: "transparent",
@@ -128,8 +128,10 @@ export function MobileCarousel(props) {
             </button>
           ))}
         </div>
+        {/* Counter sits beside the dots, not pushed right: the far-right edge of a
+            mobile screen belongs to the floating action stack. */}
         {props.counter ? (
-          <span style={{ fontSize: "var(--text-body-sm)", color: "var(--color-slate)", fontVariantNumeric: "tabular-nums", marginLeft: "auto" }}>
+          <span style={{ fontSize: "var(--text-body-sm)", color: "var(--color-slate)", fontVariantNumeric: "tabular-nums" }}>
             {active + 1} / {items.length}
           </span>
         ) : null}

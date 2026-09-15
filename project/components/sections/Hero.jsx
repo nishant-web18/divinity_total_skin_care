@@ -9,7 +9,7 @@ export function Hero(props) {
         {
           background: props.tone === "canvas" ? "var(--color-lavender-mist)" : "var(--color-canopy-green)",
           width: "100%",
-          padding: "var(--section-padding-y) var(--page-gutter)",
+          padding: props.compact ? "var(--spacing-32) var(--page-gutter) var(--spacing-32)" : "var(--section-padding-y) var(--page-gutter)",
           fontFamily: "var(--font-dm-sans)",
           fontFeatureSettings: "var(--font-features)",
         },
@@ -22,11 +22,11 @@ export function Hero(props) {
           margin: "0 auto",
           display: "grid",
           gridTemplateColumns: props.visual ? autoFit(340) : "minmax(0, 1fr)",
-          gap: "var(--spacing-64)",
+          gap: props.compact ? "var(--spacing-32)" : "var(--spacing-64)",
           alignItems: "center",
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-24)", minWidth: 0 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: props.compact ? "var(--spacing-16)" : "var(--spacing-24)", minWidth: 0 }}>
           {props.eyebrow ? (
             <span style={{ fontSize: "var(--text-caption)", fontWeight: "var(--font-weight-semibold)", letterSpacing: "0.06em", textTransform: "uppercase", color: props.tone === "canvas" ? "var(--color-indigo-bloom)" : "var(--color-leaf-bright)" }}>
               {props.eyebrow}
@@ -54,7 +54,7 @@ export function Hero(props) {
               screen the stack stays hidden rather than duplicating them. */}
           <div data-hero-cta="" style={{ display: "flex", flexWrap: "wrap", gap: "var(--spacing-12)", marginTop: "var(--spacing-8)" }}>
             {props.primaryLabel ? (
-              <Button variant="primary" size="lg" onClick={props.onPrimary}>
+              <Button variant="primary" size="lg" full={props.compact} onClick={props.onPrimary}>
                 {props.primaryLabel}
               </Button>
             ) : null}
@@ -64,7 +64,7 @@ export function Hero(props) {
               </Button>
             ) : null}
           </div>
-          {props.footer ? <div style={{ marginTop: "var(--spacing-32)" }}>{props.footer}</div> : null}
+          {props.footer ? <div style={{ marginTop: props.compact ? "var(--spacing-8)" : "var(--spacing-32)" }}>{props.footer}</div> : null}
         </div>
         {props.visual ? <div style={{ minWidth: 0 }}>{props.visual}</div> : null}
       </div>

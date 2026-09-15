@@ -58,7 +58,7 @@ export function TopNav(props) {
         style={{
           maxWidth: "var(--page-max-width)",
           margin: "0 auto",
-          padding: compact ? "8px var(--page-gutter)" : "24px var(--page-gutter)",
+          padding: compact ? "6px var(--page-gutter)" : "24px var(--page-gutter)",
           display: "flex",
           alignItems: "center",
           /* nowrap on purpose: the wordmark must shrink and wrap its own text

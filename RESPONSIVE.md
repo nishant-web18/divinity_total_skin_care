@@ -490,6 +490,60 @@ Then run: `node scripts/responsive-audit.mjs http://localhost:3000` and get to z
 
 ---
 
+## 14b. Mobile patterns in this repo
+
+Two components implement §6's moves. Both branch on `useIsMobile()`
+(`components/hooks/useMediaQuery.js`, a `matchMedia` subscription at 767px) because
+this kit styles inline and has no `md:` prefix available. Desktop renders the same
+markup it did before either existed.
+
+### `MobileActionStack` — the conversion bar, off the content
+
+A full-width bottom bar costs ~110px of every phone screen and truncates its own
+labels. `ui_kits/website/MobileActionStack.jsx` puts Directions / Call / WhatsApp in
+the bottom-right corner instead: 48px circles, 56px for WhatsApp as the primary and
+the one closest to the thumb.
+
+- Hidden until an `IntersectionObserver` on `[data-hero-cta]` reports the hero CTAs
+  have left the viewport — on first load the hero already carries that button, and a
+  floating copy of it is noise.
+- `bottom: calc(16px + env(safe-area-inset-bottom, 0px))` clears the home indicator.
+- The hidden state must not park the element past the right edge. A 24px outward
+  translate reads as real horizontal overflow to the audit and to the browser; slide
+  from **inside** the gutter and set `visibility: hidden`.
+- Nothing else may sit at the bottom-right of a section on mobile. A full-width button
+  there scrolls underneath the stack — keep such buttons auto-width and left-aligned.
+
+### `MobileCarousel` — card grids that swipe
+
+`components/layout/MobileCarousel.jsx` renders a scroll-snap strip below 768px and
+hands `gridStyle` straight back above it. Apply it where **3+ same-type cards** would
+otherwise stack. Not for the two doctor profiles, not for the FAQ (that is `<details>`,
+§6), not for anything that must be read in order.
+
+- Slides are `84%` wide so ~16% of the next card shows. The peek is the affordance;
+  dots alone are too small to notice.
+- The strip bleeds to the screen edge (`margin-inline: calc(-1 * var(--page-gutter))`)
+  and pads back in, so the first card lines up with the section heading.
+- Dots are tracked by an `IntersectionObserver` at threshold 0.6 against the strip as
+  root — never scroll-position maths. Each dot is a **44×44 button** around a 6px mark;
+  a 24px-wide hit area fails the house target and squeezes the row.
+- Strip carries `role="region"`, `aria-roledescription="carousel"` and `tabIndex={0}`;
+  slides carry `role="group"` and `aria-label="N of M"`. No autoplay, ever.
+
+### Mobile type and spacing
+
+Retuned at the **token** level in `ui_kits/website/index.html` under
+`@media (max-width: 767px)`, not per component, so every section follows and nothing
+above 768px moves: `--text-heading-lg` drops to `clamp(30px, 8vw, 36px)`,
+`--text-heading` to `clamp(26px, 7vw, 32px)`, `--section-padding-y` to 52px.
+
+A grid of two tracks narrower than 150px still counts as uncollapsed (§13 anti-pattern
+4). The stats block uses `autoFit(140)` so it is 2-up from ~360px and single-column
+below, rather than forcing two 136px columns onto a 320px screen.
+
+---
+
 ## 15. Sources
 
 - [WCAG 2.2 SC 2.5.8 Target Size (Minimum) — 24×24 CSS px, Level AA](https://silktide.com/accessibility-guide/the-wcag-standard/2-5/input-modalities/2-5-8-target-size-minimum/) and [SC 2.5.5 Enhanced — 44×44](https://accessibility.build/wcag/2-5-5)

@@ -25,10 +25,17 @@ export function HomeScreen(props) {
   /* The phone has a content-driven height, so the photo behind it is given a matching
      min-height rather than a pure aspect ratio — otherwise the crop gets shorter than
      the phone as the column narrows and the layering inverts. */
+  /* TODO: show the photo on mobile once the real clinic shoot lands — an empty dashed
+     box 400px tall is the single biggest waste of a phone screen on this page.
+     The chat mock stays (it is what tells a patient the clinic answers on WhatsApp)
+     but runs a single message on phones, which is what lets the section below it
+     show at the fold. */
   const heroVisual = (
     <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--spacing-16)", alignItems: "stretch" }}>
-      <PhoneMockup contact="Divinity Total Skin Care" status="replies on WhatsApp" messages={bookingThread} width={228} composer={false} style={{ flex: "0 0 228px" }} />
-      <PhotoFrame ratio="3 / 4" placeholder="Clinic interior, Mansarovar — photo shoot pending" style={{ flex: "1 1 200px", minWidth: 0 }} />
+      <PhoneMockup contact="Divinity Total Skin Care" status="replies on WhatsApp" messages={isMobile ? bookingThread.slice(0, 1) : bookingThread} width={isMobile ? 240 : 228} composer={false} style={{ flex: "0 0 auto", maxWidth: "100%", marginInline: isMobile ? "auto" : undefined }} />
+      {isMobile ? null : (
+        <PhotoFrame ratio="3 / 4" placeholder="Clinic interior, Mansarovar — photo shoot pending" style={{ flex: "1 1 200px", minWidth: 0 }} />
+      )}
     </div>
   );
 
@@ -37,12 +44,15 @@ export function HomeScreen(props) {
       <Hero
         eyebrow={CLINIC.locality + " · since " + CLINIC.established}
         headline={<React.Fragment>Skin, hair and laser care by two <span style={{ color: "var(--color-leaf-bright)" }}>DNB</span> dermatologists</React.Fragment>}
-        headlineSize="clamp(38px, 4.4vw, 69px)"
-        body="Thirteen years at the same Mansarovar address, 735 patient stories on Practo, and an in-house pharmacy so one visit is one visit. Message the clinic on WhatsApp and we will hold a slot."
+        headlineSize={isMobile ? "clamp(32px, 9vw, 42px)" : "clamp(38px, 4.4vw, 69px)"}
+        body={isMobile
+          ? "13 years in Mansarovar, 735 patient stories on Practo, and an in-house pharmacy. Message us on WhatsApp to book."
+          : "Thirteen years at the same Mansarovar address, 735 patient stories on Practo, and an in-house pharmacy so one visit is one visit. Message the clinic on WhatsApp and we will hold a slot."}
         primaryLabel="Book on WhatsApp"
         onPrimary={props.onBook}
         secondaryLabel="See treatments"
         onSecondary={() => props.onNavigate("Treatments")}
+        compact={isMobile}
         visual={heroVisual}
         footer={
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-8)" }}>
@@ -53,11 +63,11 @@ export function HomeScreen(props) {
       />
 
       <SectionBand tone="white" paddingY="var(--spacing-56)">
-        <div style={{ display: "grid", gridTemplateColumns: autoFit(200), gap: "var(--grid-gap)" }}>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? autoFit(140) : autoFit(200), columnGap: isMobile ? "var(--spacing-16)" : "var(--grid-gap)", rowGap: isMobile ? "var(--spacing-24)" : "var(--grid-gap)" }}>
           {TRUST.map((t) => (
             <div key={t.value} style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-              <span style={{ fontSize: "var(--text-heading)", lineHeight: "var(--leading-heading)", letterSpacing: "var(--tracking-tight)", fontWeight: "var(--font-weight-bold)", color: "var(--color-canopy-green)" }}>{t.value}</span>
-              <span style={{ fontSize: "var(--text-body-sm)", lineHeight: "var(--leading-body-sm)", color: "var(--color-graphite)" }}>{t.label}</span>
+              <span style={{ fontSize: isMobile ? "clamp(28px, 8.5vw, 34px)" : "var(--text-heading)", lineHeight: "var(--leading-heading)", letterSpacing: "var(--tracking-tight)", fontWeight: "var(--font-weight-bold)", color: "var(--color-canopy-green)" }}>{t.value}</span>
+              <span style={{ fontSize: "var(--text-body-sm)", lineHeight: "var(--leading-body-sm)", color: "var(--color-graphite)" }}>{isMobile && t.short ? t.short : t.label}</span>
             </div>
           ))}
         </div>
@@ -156,9 +166,9 @@ export function HomeScreen(props) {
             gridStyle={{ display: "grid", gridTemplateColumns: autoFit(260), gap: "var(--grid-gap)" }}
           >
             {REVIEWS.map((r) => (
-              <blockquote key={r.text} style={{ margin: 0, background: "var(--color-paper-white)", borderRadius: "var(--radius-cards-sm)", padding: "var(--card-padding)", display: "flex", flexDirection: "column", gap: "var(--spacing-12)", height: "100%" }}>
+              <blockquote key={r.text} style={{ margin: 0, background: "var(--color-paper-white)", borderRadius: "var(--radius-cards-sm)", padding: "var(--card-padding)", display: "flex", flexDirection: "column", gap: "var(--spacing-12)", height: isMobile ? "100%" : undefined }}>
                 <p style={{ fontSize: "var(--text-body)", lineHeight: "var(--leading-body)", color: "var(--color-ink-black)", margin: 0 }}>{r.text}</p>
-                <footer style={{ fontSize: "var(--text-caption)", color: "var(--color-slate)", marginTop: "auto" }}>{r.context}</footer>
+                <footer style={{ fontSize: "var(--text-caption)", color: "var(--color-slate)", marginTop: isMobile ? "auto" : undefined }}>{r.context}</footer>
               </blockquote>
             ))}
           </MobileCarousel>
