@@ -1,0 +1,86 @@
+import React from "react";
+
+/* Marks a fact the build brief flags as unconfirmed. A medical site cannot publish a
+   guessed fee, timing, registration number or phone line, so the layout shows the slot
+   and names what is missing instead of inventing a value. */
+export function Pending(props) {
+  const inline = !!props.inline;
+  return (
+    <span
+      style={Object.assign(
+        {
+          display: "inline-flex",
+          alignItems: "center",
+          gap: "var(--spacing-8)",
+          background: "var(--color-peach-wash)",
+          color: "var(--color-deep-teal)",
+          border: "1px dashed var(--color-coral-pulse)",
+          borderRadius: inline ? "var(--radius-tags)" : "var(--radius-icons)",
+          padding: inline ? "3px 10px" : "8px 12px",
+          fontFamily: "var(--font-dm-sans)",
+          fontFeatureSettings: "var(--font-features)",
+          fontSize: "var(--text-caption)",
+          fontWeight: "var(--font-weight-semibold)",
+          lineHeight: 1.3,
+        },
+        props.style
+      )}
+    >
+      {props.children || "Confirming with the clinic"}
+    </span>
+  );
+}
+
+/* Brief §9: sticky Call · WhatsApp · Directions bar. 80%+ of this clinic's traffic is
+   mobile, so the three conversion actions are always one tap away. */
+export function StickyBar(props) {
+  const items = [
+    { label: "Call the clinic", sub: props.phone, href: "tel:", tone: "ghost" },
+    { label: "WhatsApp", sub: props.hindi, href: props.whatsappUrl, tone: "primary" },
+    { label: "Directions", sub: "KL Saini Stadium", href: props.mapsUrl, tone: "ghost" },
+  ];
+  return (
+    <div
+      style={{
+        position: "fixed",
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 40,
+        background: "var(--color-canopy-green)",
+        borderTop: "1px solid rgba(255,255,255,0.14)",
+        padding: "10px var(--page-gutter)",
+        fontFamily: "var(--font-dm-sans)",
+        fontFeatureSettings: "var(--font-features)",
+      }}
+    >
+      <div style={{ maxWidth: "var(--page-max-width)", margin: "0 auto", display: "flex", flexWrap: "wrap", gap: "var(--spacing-8)" }}>
+        {items.map((it) => (
+          <a
+            key={it.label}
+            href={it.href}
+            onClick={it.href === "tel:" ? (e) => e.preventDefault() : undefined}
+            target={it.href.indexOf("http") === 0 ? "_blank" : undefined}
+            rel={it.href.indexOf("http") === 0 ? "noreferrer" : undefined}
+            style={{
+              flex: "1 1 160px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 1,
+              padding: "10px 16px",
+              borderRadius: "var(--radius-buttons)",
+              textDecoration: "none",
+              background: it.tone === "primary" ? "var(--action-primary-bg)" : "transparent",
+              border: it.tone === "primary" ? "1px solid transparent" : "1px solid var(--color-paper-white)",
+              color: "var(--color-paper-white)",
+            }}
+          >
+            <span style={{ fontSize: "var(--text-body-sm)", fontWeight: "var(--font-weight-semibold)" }}>{it.label}</span>
+            <span style={{ fontSize: 11, color: it.tone === "primary" ? "rgba(255,255,255,0.85)" : "var(--color-mint-wash)" }}>{it.sub}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}

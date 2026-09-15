@@ -1,0 +1,60 @@
+<!-- @dsCard group="Components" viewport="700x300" name="Buttons" subtitle="Coral primary, ghost twin (light + dark), nav outline, cream, disabled" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Buttons</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js"></script>
+<script src="../../assets/ds-dev-loader.js"></script>
+<style>
+  body { background: var(--color-paper-white); margin:0; padding:20px 24px; width:700px; height:300px; overflow:hidden; }
+  .lbl { font-size:11px; font-weight:600; color:var(--color-slate); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px }
+  .grp { display:flex; gap:12px; align-items:center; flex-wrap:wrap }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+function renderCard() {
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <div>
+        <div className="lbl">Primary + ghost twin — light surface</div>
+        <div className="grp">
+          <Button variant="primary" size="lg">Book a Call</Button>
+          <Button variant="ghost" size="lg">Take a tour</Button>
+          <Button variant="primary" size="lg" disabled>Disabled</Button>
+        </div>
+      </div>
+      <div style={{ background: 'var(--color-canopy-green)', borderRadius: 'var(--radius-cards)', padding: '16px 20px' }}>
+        <div className="lbl" style={{ color: 'var(--color-mint-wash)' }}>On dark hero</div>
+        <div className="grp">
+          <Button variant="primary" size="lg">Book a Call</Button>
+          <Button variant="ghostOnDark" size="lg">Take a tour</Button>
+          <Button variant="cream" size="sm">Apply now</Button>
+        </div>
+      </div>
+      <div>
+        <div className="lbl">Nav + small</div>
+        <div className="grp">
+          <Button variant="nav" size="md">Book a Call</Button>
+          <Button variant="ghost" size="sm">Log in</Button>
+        </div>
+      </div>
+    </div>
+  );
+}
+dsLoad(["../buttons/Button.jsx"]).then(function (m) {
+  Object.assign(window, m);
+  renderCard();
+}).catch(function (err) {
+  document.getElementById("root").textContent = String(err);
+  console.error(err);
+});
+</script>
+</body>
+</html>

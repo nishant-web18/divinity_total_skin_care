@@ -1,0 +1,23 @@
+<!-- @dsCard group="Colors" viewport="700x180" subtitle="Depth is surface colour, never shadow: canvas → card → pastel → dark band" name="Surface ladder" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Surface ladder</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { background: var(--color-paper-white); margin: 0; padding: 20px 24px; width: 700px; height: 180px; overflow: hidden; }
+  .row { display: flex; gap: 12px; align-items: flex-start; }
+  .sw { display: flex; flex-direction: column; gap: 6px; }
+  .chip { height: 56px; border-radius: var(--radius-icons); }
+  .nm { font-size: 11px; font-weight: 600; color: var(--color-charcoal); letter-spacing: 0; }
+  .hx { font-size: 11px; color: var(--color-slate); font-variant-numeric: tabular-nums; }
+  .lbl { font-size: 11px; font-weight: 600; color: var(--color-slate); text-transform: uppercase; letter-spacing: .06em; }
+  .stack { display:flex; gap:0; align-items:stretch; height:120px; border-radius: var(--radius-cards); overflow:hidden; }
+  .lv { flex:1; display:flex; flex-direction:column; justify-content:flex-end; padding:12px; font-size:11px; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="stack"><div class="lv" style="background:#eee2ff;color:#47264c">0 · Page canvas<br><span style="font-weight:400;opacity:.7">#eee2ff</span></div><div class="lv" style="background:#ffffff;color:#333333;border-left:1px solid #e0e0e0;border-right:1px solid #e0e0e0">1 · Card<br><span style="font-weight:400;opacity:.7">#ffffff</span></div><div class="lv" style="background:#d2f2e3;color:#0a3922">2 · Pastel card<br><span style="font-weight:400;opacity:.7">#d2f2e3</span></div><div class="lv" style="background:#0a3922;color:#ffffff">3 · Dark brand band<br><span style="font-weight:400;opacity:.7">#0a3922</span></div></div>
+</body>
+</html>

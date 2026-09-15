@@ -1,0 +1,55 @@
+<!-- @dsCard group="Components" viewport="1100x560" name="Sections" subtitle="Dark hero: 80px headline with swapped word, coral + ghost, logo strip, product visual" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sections</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js"></script>
+<script src="../../assets/ds-dev-loader.js"></script>
+<style>
+  body { background: var(--color-canopy-green); margin:0; padding:0; width:1100px; height:560px; overflow:hidden; }
+  .lbl { font-size:11px; font-weight:600; color:var(--color-slate); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+function renderCard() {
+  const msgs = [
+    { direction: 'in', sender: 'Sister Naledi', text: 'Your check-up is Tuesday 10:30.' },
+    { direction: 'out', text: 'Confirmed, thank you.' },
+  ];
+  const visual = (
+    <div style={{ position: 'relative', paddingLeft: 40 }}>
+      <PhotoFrame ratio="5 / 4" placeholder="Health worker portrait" style={{ marginLeft: 30 }} />
+      <PhoneMockup contact="Clinic" messages={msgs} width={190} composer={false} style={{ position: 'absolute', left: 0, bottom: -10 }} />
+    </div>
+  );
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(
+    <div style={{ '--page-gutter': '28px', '--section-padding-y': '40px' }}>
+      <Hero
+        headline={<>Turn <span style={{ color: 'var(--color-leaf-bright)' }}>chat</span> into care</>}
+        headlineSize="56px"
+        body="Reach every patient on the messaging app they already use."
+        primaryLabel="Book a Call"
+        secondaryLabel="Take a tour"
+        visual={visual}
+        footer={<LogoStrip label="In partnership with" items={['UNICEF', 'Praekelt', 'WHO']} align="flex-start" />}
+      />
+    </div>
+  );
+}
+dsLoad(["../sections/Hero.jsx", "../sections/LogoStrip.jsx", "../product/PhoneMockup.jsx", "../media/PhotoFrame.jsx"]).then(function (m) {
+  Object.assign(window, m);
+  renderCard();
+}).catch(function (err) {
+  document.getElementById("root").textContent = String(err);
+  console.error(err);
+});
+</script>
+</body>
+</html>

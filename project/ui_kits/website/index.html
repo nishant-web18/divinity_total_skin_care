@@ -1,0 +1,81 @@
+<!-- @dsCard group="Website" viewport="1280x760" name="Divinity Total Skin Care" subtitle="Clinic site: hero, treatments, doctors, fees & FAQ, contact + sticky WhatsApp bar" -->
+<!-- @startingPoint section="Website" subtitle="Dermatology clinic site — five screens, sticky conversion bar, pending-fact markers" viewport="1280x760" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skin Specialist in Mansarovar, Jaipur | Divinity Total Skin Care</title>
+<meta name="description" content="DNB dermatologists Dr. Prateek Manjul &amp; Dr. Vinisha Baliyan. Acne, laser hair removal, hair transplant &amp; skin treatments in Mansarovar, Jaipur since 2013. Book on WhatsApp.">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400..700&display=swap">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js"></script>
+<script src="../../assets/ds-dev-loader.js"></script>
+<style>
+  /* Kit-local: DM Sans carries no Devanagari, so the bilingual lines get a companion
+     face. Everything else stays on the design system's single family. */
+  body {
+    background: var(--surface-page-canvas);
+    --font-hi: "Noto Sans Devanagari", "DM Sans", sans-serif;
+  }
+  @media (max-width: 900px) {
+    body { --page-gutter: 24px; --section-padding-y: 48px; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  "name": "Divinity Total Skin Care",
+  "medicalSpecialty": "Dermatology",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "21/280, Kaveri Path, Madhyam Marg, Near KL Saini Cricket Stadium",
+    "addressLocality": "Mansarovar, Jaipur",
+    "addressRegion": "Rajasthan",
+    "postalCode": "302020",
+    "addressCountry": "IN"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 26.8754787, "longitude": 75.7529494 },
+  "telephone": "+91-XXXXXXXXXX",
+  "url": "https://REPLACE-WITH-DOMAIN",
+  "foundingDate": "2013",
+  "employee": [
+    { "@type": "Physician", "name": "Dr. Prateek Manjul", "medicalSpecialty": "Dermatology" },
+    { "@type": "Physician", "name": "Dr. Vinisha Baliyan", "medicalSpecialty": "Dermatology" }
+  ]
+}
+</script>
+<!-- openingHoursSpecification and aggregateRating are deliberately absent: hours are
+     unconfirmed, and a rating must come from a live reviews source, never hardcoded. -->
+</head>
+<body>
+<div id="root"><!-- skeleton: brand bands paint instantly, React replaces this on mount -->
+  <div style="background: var(--color-paper-white); padding: 24px var(--page-gutter);">
+    <div style="max-width: var(--page-max-width); margin: 0 auto; display: flex; align-items: center;">
+      <span style="font-size: var(--text-subheading); font-weight: 700; letter-spacing: var(--tracking-tight); color: var(--color-canopy-green);">Divinity Total Skin Care</span>
+    </div>
+  </div>
+  <div style="background: var(--color-canopy-green); padding: var(--section-padding-y) var(--page-gutter); min-height: 420px;">
+    <div style="max-width: var(--page-max-width); margin: 0 auto; display: flex; flex-direction: column; gap: var(--spacing-24);">
+      <span style="font-size: var(--text-caption); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-leaf-bright);">Mansarovar, Jaipur · since 2013</span>
+      <h1 style="font-size: clamp(38px, 4.4vw, 69px); line-height: 1.05; letter-spacing: var(--tracking-tighter); font-weight: 500; color: var(--color-paper-white); max-width: 24ch;">Skin, hair and laser care by two <span style="color: var(--color-leaf-bright);">DNB</span> dermatologists</h1>
+      <p style="font-size: var(--text-body-lg); line-height: var(--leading-body-lg); color: var(--color-mint-wash); max-width: 480px;">Thirteen years at the same Mansarovar address, 735 patient stories on Practo, and an in-house pharmacy so one visit is one visit.</p>
+    </div>
+  </div>
+</div>
+<script>
+  dsLoad(["./App.jsx"]).then(function (m) {
+    var host = document.getElementById("root");
+    host.textContent = "";
+    ReactDOM.createRoot(host).render(React.createElement(m.App));
+  }).catch(function (err) {
+    document.getElementById("root").textContent = String(err);
+    console.error(err);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!-- @dsCard group="Components" viewport="700x265" name="Lists" subtitle="Toolkit checklist rows — default, hover, and active block" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lists</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js"></script>
+<script src="../../assets/ds-dev-loader.js"></script>
+<style>
+  body { background: var(--color-paper-white); margin:0; padding:20px 24px; width:700px; height:265px; overflow:hidden; }
+  .lbl { font-size:11px; font-weight:600; color:var(--color-slate); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px }
+  .grp { display:flex; gap:12px; align-items:center; flex-wrap:wrap }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+function renderCard() {
+  const dot = <span style={{ width: 10, height: 10, borderRadius: 3, background: 'currentColor', display: 'block' }} />;
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 4, maxWidth: 420 }}>
+      <ChecklistItem active icon={dot}>Appointment reminders</ChecklistItem>
+      <ChecklistItem icon={dot}>Symptom triage flows</ChecklistItem>
+      <ChecklistItem icon={dot}>Treatment adherence nudges</ChecklistItem>
+      <ChecklistItem icon={dot}>Community health reporting</ChecklistItem>
+    </div>
+  );
+}
+dsLoad(["../lists/ChecklistItem.jsx"]).then(function (m) {
+  Object.assign(window, m);
+  renderCard();
+}).catch(function (err) {
+  document.getElementById("root").textContent = String(err);
+  console.error(err);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+/* Colors — base palette.
+   Structure: 5 brand anchors, 4 accents, a 9-step neutral ramp, and 8 pastel washes.
+   Only ONE high-saturation warm color exists (--color-coral-pulse) and it is reserved
+   for primary filled actions. See tokens/surfaces.css for semantic aliases. */
+:root {
+  /* Brand anchors */
+  --color-canopy-green: #0a3922;
+  --color-coral-pulse: #ff643b;
+  --color-indigo-bloom: #460095;
+  --color-leaf-bright: #1dbf73;
+  --color-deep-teal: #003642;
+
+  /* Accents */
+  --color-orchid-tint: #f3b3fe;
+  --color-sky-signal: #00b4dc;
+  --color-aubergine: #47264c;
+
+  /* Neutrals — dark to light */
+  --color-ink-black: #000000;
+  --color-charcoal: #333333;
+  --color-graphite: #3d3d3d;
+  --color-slate: #7a7a7a;
+  --color-ash: #a6a6a6;
+  --color-frost-gray: #e0e0e0;
+  --color-cloud-gray: #f2f2f2;
+  --color-paper-white: #ffffff;
+
+  /* Pastel washes — the "rooms" of the system */
+  --color-lavender-mist: #eee2ff;
+  --color-mint-wash: #d2f2e3;
+  --color-sky-wash: #ccf0f8;
+  --color-sage-wash: #e4f7ee;
+  --color-lilac-wash: #fdf0ff;
+  --color-peach-wash: #ffede8;
+  --color-cream: #faf7e8;
+  --color-sand: #f4ece9;
+
+  /* Product-UI literals (chat mockups only) */
+  --color-chat-outgoing: #dcf8c6;
+
+  /* Pastel card rotation — feature grids cycle in this order */
+  --pastel-1: var(--color-mint-wash);
+  --pastel-2: var(--color-sage-wash);
+  --pastel-3: var(--color-sky-wash);
+  --pastel-4: var(--color-cream);
+  --pastel-5: var(--color-lilac-wash);
+  --pastel-6: var(--color-peach-wash);
+}

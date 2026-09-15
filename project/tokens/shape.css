@@ -1,0 +1,34 @@
+/* Shape & elevation — soft radii, essentially no shadows.
+   Depth comes from surface color shifts, not elevation stacks.
+   --shadow-subtle exists for form-field separation only. */
+:root {
+  --radius-sm: 2px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-2xl-2: 20px;
+  --radius-3xl: 24px;
+  --radius-3xl-2: 40px;
+
+  /* Named, role-based radii — prefer these */
+  --radius-tags: 9999px;
+  --radius-cards: 24px;
+  --radius-cards-sm: 16px;
+  --radius-icons: 8px;
+  --radius-buttons: 40px;
+
+  --border-hairline: 1px solid var(--color-frost-gray);
+  --border-mid: 1px solid var(--color-ash);
+  --border-strong: 1px solid var(--color-ink-black);
+  --border-on-dark: 1px solid var(--color-paper-white);
+
+  --shadow-subtle: rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+  --shadow-none: none;
+
+  /* Motion — quiet, functional; no bounce */
+  --ease-standard: cubic-bezier(0.2, 0, 0.2, 1);
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+  --transition-base: all var(--duration-base) var(--ease-standard);
+}

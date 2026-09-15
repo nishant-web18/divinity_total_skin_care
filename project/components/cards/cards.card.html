@@ -1,0 +1,51 @@
+<!-- @dsCard group="Components" viewport="700x380" name="Cards" subtitle="Pastel feature card (rotation) + white product card inside it" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cards</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js"></script>
+<script src="../../assets/ds-dev-loader.js"></script>
+<style>
+  body { background: var(--color-lavender-mist); margin:0; padding:20px 24px; width:700px; height:380px; overflow:hidden; }
+  .lbl { font-size:11px; font-weight:600; color:var(--color-slate); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px }
+  .grp { display:flex; gap:12px; align-items:center; flex-wrap:wrap }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+function renderCard() {
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+      <PastelCard index={0} tag={<Tag tone="mint">Reminders</Tag>} title="Cut no-shows by 40%" body="Reminders land in the app patients already use every day.">
+        <ProductCard title="Clinic follow-up" meta="09:41" hairline>
+          <div style={{ fontSize: 13, color: 'var(--color-graphite)', lineHeight: 1.5 }}>Reply 1 to confirm Tuesday 10:30.</div>
+        </ProductCard>
+      </PastelCard>
+      <PastelCard index={4} tag={<Tag tone="lilac">Toolkit</Tag>} title="One journey, end to end" body="Triage, booking and adherence in a single thread.">
+        <ProductCard title="Adherence" meta="This week" hairline>
+          <div style={{ display: 'flex', gap: 6, alignItems: 'flex-end', height: 48 }}>
+            {[22, 34, 28, 44, 38, 48].map((h, i) => (
+              <div key={i} style={{ width: 18, height: h, background: 'var(--color-sky-signal)', borderRadius: 4 }} />
+            ))}
+          </div>
+        </ProductCard>
+      </PastelCard>
+    </div>
+  );
+}
+dsLoad(["../cards/PastelCard.jsx", "../cards/ProductCard.jsx", "../tags/Tag.jsx"]).then(function (m) {
+  Object.assign(window, m);
+  renderCard();
+}).catch(function (err) {
+  document.getElementById("root").textContent = String(err);
+  console.error(err);
+});
+</script>
+</body>
+</html>

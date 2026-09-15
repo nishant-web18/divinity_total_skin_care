@@ -1,0 +1,37 @@
+/* Semantic aliases — use these in components, not raw palette values. */
+:root {
+  /* Surfaces, level 0 -> 3 */
+  --surface-page-canvas: var(--color-lavender-mist);
+  --surface-card-surface: var(--color-paper-white);
+  --surface-pastel-card: var(--color-mint-wash);
+  --surface-dark-brand-surface: var(--color-canopy-green);
+  --surface-neutral-card: var(--color-cloud-gray);
+  --surface-purple-band: var(--color-indigo-bloom);
+
+  /* Text */
+  --text-primary: var(--color-ink-black);
+  --text-secondary: var(--color-graphite);
+  --text-meta: var(--color-slate);
+  --text-heading-color: var(--color-canopy-green);
+  --text-heading-alt: var(--color-indigo-bloom);
+  --text-on-dark: var(--color-paper-white);
+  --text-on-dark-muted: var(--color-mint-wash);
+  --text-link: var(--color-canopy-green);
+  --text-link-hover: var(--color-indigo-bloom);
+  --text-highlight: var(--color-leaf-bright);
+
+  /* Borders */
+  --border-color-hairline: var(--color-frost-gray);
+  --border-color-mid: var(--color-ash);
+  --border-color-strong: var(--color-ink-black);
+
+  /* Actions */
+  --action-primary-bg: var(--color-coral-pulse);
+  --action-primary-fg: var(--color-paper-white);
+  --action-primary-bg-hover: #f04f24;
+  --action-ghost-fg-on-dark: var(--color-paper-white);
+  --action-ghost-fg-on-light: var(--color-ink-black);
+  --action-nav-bg: var(--color-paper-white);
+  --action-nav-fg: var(--color-canopy-green);
+  --focus-ring: 2px solid var(--color-leaf-bright);
+}

@@ -1,0 +1,39 @@
+<!-- @dsCard group="Components" viewport="700x330" name="Media" subtitle="Photography frame: placeholder state, leaf wash, green wash" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Media</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js"></script>
+<script src="../../assets/ds-dev-loader.js"></script>
+<style>
+  body { background: var(--color-lavender-mist); margin:0; padding:20px 24px; width:700px; height:330px; overflow:hidden; }
+  .lbl { font-size:11px; font-weight:600; color:var(--color-slate); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+function renderCard() {
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+      <PhotoFrame ratio="4 / 5" placeholder="Portrait — supply real photography" />
+      <PhotoFrame ratio="4 / 5" overlay="leaf" placeholder="Leaf wash 40%" caption="overlay=leaf" />
+      <PhotoFrame ratio="4 / 5" overlay="green" placeholder="Green wash" caption="overlay=green" />
+    </div>
+  );
+}
+dsLoad(["../media/PhotoFrame.jsx"]).then(function (m) {
+  Object.assign(window, m);
+  renderCard();
+}).catch(function (err) {
+  document.getElementById("root").textContent = String(err);
+  console.error(err);
+});
+</script>
+</body>
+</html>

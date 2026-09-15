@@ -1,0 +1,21 @@
+<!-- @dsCard group="Type" viewport="700x220" subtitle="Negative tracking scales with size — the detail that makes the display feel editorial" name="Tracking rule" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tracking rule</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { background: var(--color-paper-white); margin: 0; padding: 20px 24px; width: 700px; height: 220px; overflow: hidden; }
+  .row { display: flex; gap: 12px; align-items: flex-start; }
+  .sw { display: flex; flex-direction: column; gap: 6px; }
+  .chip { height: 56px; border-radius: var(--radius-icons); }
+  .nm { font-size: 11px; font-weight: 600; color: var(--color-charcoal); letter-spacing: 0; }
+  .hx { font-size: 11px; color: var(--color-slate); font-variant-numeric: tabular-nums; }
+  .lbl { font-size: 11px; font-weight: 600; color: var(--color-slate); text-transform: uppercase; letter-spacing: .06em; }
+</style>
+</head>
+<body>
+<div style="display:flex;flex-direction:column;gap:14px"><div><div class="lbl">≥52px → −0.028em</div><div style="font-size:56px;line-height:1.05;letter-spacing:-0.028em;font-weight:500;color:#0a3922">Tighter display</div></div><div><div class="lbl">32–48px → −0.019em</div><div style="font-size:32px;line-height:1.2;letter-spacing:-0.019em;font-weight:500;color:#003642">Tight heading</div></div><div><div class="lbl">≤24px → normal</div><div style="font-size:18px;line-height:1.4;color:#3d3d3d">Body text keeps default tracking.</div></div></div>
+</body>
+</html>

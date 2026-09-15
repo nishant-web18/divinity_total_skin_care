@@ -1,0 +1,40 @@
+<!-- @dsCard group="Components" viewport="700x200" name="Forms" subtitle="Text field with label, hint, focus and disabled states — the only shadow in the system" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Forms</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js"></script>
+<script src="../../assets/ds-dev-loader.js"></script>
+<style>
+  body { background: var(--color-paper-white); margin:0; padding:20px 24px; width:700px; height:200px; overflow:hidden; }
+  .lbl { font-size:11px; font-weight:600; color:var(--color-slate); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px }
+  .grp { display:flex; gap:12px; align-items:center; flex-wrap:wrap }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+function renderCard() {
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(
+    <div style={{ display: 'flex', gap: 20, alignItems: 'flex-end' }}>
+      <Input label="Work email" placeholder="you@clinic.org" hint="We reply within a day." style={{ width: 260 }} />
+      <Input label="Organisation" defaultValue="Khayelitsha Health" style={{ width: 220 }} />
+      <Button variant="primary" size="lg">Book a Call</Button>
+    </div>
+  );
+}
+dsLoad(["../forms/Input.jsx", "../buttons/Button.jsx"]).then(function (m) {
+  Object.assign(window, m);
+  renderCard();
+}).catch(function (err) {
+  document.getElementById("root").textContent = String(err);
+  console.error(err);
+});
+</script>
+</body>
+</html>

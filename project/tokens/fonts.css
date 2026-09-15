@@ -1,0 +1,5 @@
+/* Typeface: DM Sans — the single family of the system (12px caption → 116px display).
+   No licensed font binaries shipped with the style reference, so the webfont is pulled
+   from Google Fonts. If you have self-hosted files, drop them in assets/fonts/ and
+   replace this @import with local @font-face rules — keep the family name "DM Sans". */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&display=swap");

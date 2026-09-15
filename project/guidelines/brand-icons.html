@@ -1,0 +1,24 @@
+<!-- @dsCard group="Brand" viewport="700x160" subtitle="Lucide 24px, 1.5–2px stroke, Canopy Green or Ink Black — substitute, see readme" name="Iconography" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Iconography</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { background: var(--color-paper-white); margin: 0; padding: 20px 24px; width: 700px; height: 160px; overflow: hidden; }
+  .row { display: flex; gap: 12px; align-items: flex-start; }
+  .sw { display: flex; flex-direction: column; gap: 6px; }
+  .chip { height: 56px; border-radius: var(--radius-icons); }
+  .nm { font-size: 11px; font-weight: 600; color: var(--color-charcoal); letter-spacing: 0; }
+  .hx { font-size: 11px; color: var(--color-slate); font-variant-numeric: tabular-nums; }
+  .lbl { font-size: 11px; font-weight: 600; color: var(--color-slate); text-transform: uppercase; letter-spacing: .06em; }
+  .ic { width:44px;height:44px;display:grid;place-items:center;background:#e4f7ee;border-radius:var(--radius-icons);color:#0a3922 }
+</style>
+</head>
+<body>
+<div class="row" style="gap:12px;align-items:center"><div class="ic"><i data-lucide="message-circle" style="width:24px;height:24px"></i></div><div class="ic"><i data-lucide="calendar-check" style="width:24px;height:24px"></i></div><div class="ic"><i data-lucide="users" style="width:24px;height:24px"></i></div><div class="ic"><i data-lucide="stethoscope" style="width:24px;height:24px"></i></div><div class="ic"><i data-lucide="bar-chart-3" style="width:24px;height:24px"></i></div><div class="ic"><i data-lucide="bell" style="width:24px;height:24px"></i></div><div class="ic"><i data-lucide="shield-check" style="width:24px;height:24px"></i></div><div class="ic"><i data-lucide="globe" style="width:24px;height:24px"></i></div><div class="hx" style="margin-left:8px;max-width:150px">Outlined, monochrome, 20–24px</div></div>
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

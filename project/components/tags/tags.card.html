@@ -1,0 +1,60 @@
+<!-- @dsCard group="Components" viewport="700x170" name="Tags" subtitle="Pastel-filled chips per surface, plus accent-outlined variants" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tags</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js"></script>
+<script src="../../assets/ds-dev-loader.js"></script>
+<style>
+  body { background: var(--color-paper-white); margin:0; padding:20px 24px; width:700px; height:170px; overflow:hidden; }
+  .lbl { font-size:11px; font-weight:600; color:var(--color-slate); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px }
+  .grp { display:flex; gap:12px; align-items:center; flex-wrap:wrap }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+function renderCard() {
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+      <div>
+        <div className="lbl">Filled tones</div>
+        <div className="grp">
+          <Tag tone="mint">Appointments</Tag>
+          <Tag tone="sage">Reminders</Tag>
+          <Tag tone="sky">Data</Tag>
+          <Tag tone="cream">Guides</Tag>
+          <Tag tone="lilac">Toolkit</Tag>
+          <Tag tone="peach">Support</Tag>
+          <Tag tone="orchid">New</Tag>
+        </div>
+      </div>
+      <div>
+        <div className="lbl">Outlined + on dark</div>
+        <div className="grp">
+          <Tag outline="leaf">Live</Tag>
+          <Tag outline="teal">Beta</Tag>
+          <Tag outline="indigo">Toolkit</Tag>
+          <span style={{ background: 'var(--color-canopy-green)', borderRadius: 999, padding: '6px 8px' }}>
+            <Tag tone="onDark">On dark band</Tag>
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+dsLoad(["../tags/Tag.jsx"]).then(function (m) {
+  Object.assign(window, m);
+  renderCard();
+}).catch(function (err) {
+  document.getElementById("root").textContent = String(err);
+  console.error(err);
+});
+</script>
+</body>
+</html>

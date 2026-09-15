@@ -1,0 +1,21 @@
+<!-- @dsCard group="Spacing" viewport="700x220" subtitle="1280px max-width · 80px gutters · 64px section gap · 24px card padding + gap" name="Layout in use" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Layout in use</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { background: var(--color-paper-white); margin: 0; padding: 20px 24px; width: 700px; height: 220px; overflow: hidden; }
+  .row { display: flex; gap: 12px; align-items: flex-start; }
+  .sw { display: flex; flex-direction: column; gap: 6px; }
+  .chip { height: 56px; border-radius: var(--radius-icons); }
+  .nm { font-size: 11px; font-weight: 600; color: var(--color-charcoal); letter-spacing: 0; }
+  .hx { font-size: 11px; color: var(--color-slate); font-variant-numeric: tabular-nums; }
+  .lbl { font-size: 11px; font-weight: 600; color: var(--color-slate); text-transform: uppercase; letter-spacing: .06em; }
+</style>
+</head>
+<body>
+<div style="background:#eee2ff;border-radius:var(--radius-cards);padding:16px"><div style="display:flex;gap:24px"><div style="flex:1;background:#ffffff;border-radius:24px;padding:24px;font-size:14px;font-weight:500;color:#0a3922;height:104px">Card padding 24</div><div style="flex:1;background:#d2f2e3;border-radius:24px;padding:24px;font-size:14px;font-weight:500;color:#0a3922;height:104px">Grid gap 24</div><div style="flex:1;background:#faf7e8;border-radius:24px;padding:24px;font-size:14px;font-weight:500;color:#0a3922;height:104px">Radius 24</div></div><div style="height:16px"></div><div style="font-size:11px;font-weight:600;color:#47264c;letter-spacing:.06em;text-transform:uppercase">↕ section gap 64px between bands</div></div>
+</body>
+</html>
