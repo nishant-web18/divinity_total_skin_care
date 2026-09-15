@@ -531,6 +531,32 @@ otherwise stack. Not for the two doctor profiles, not for the FAQ (that is `<det
 - Strip carries `role="region"`, `aria-roledescription="carousel"` and `tabIndex={0}`;
   slides carry `role="group"` and `aria-label="N of M"`. No autoplay, ever.
 
+### Compact preview in the hero, full card lower down
+
+A product visual tall enough to be worth showing is usually tall enough to get sliced
+in half at the fold. The phone mockup did exactly that: the mobile hero ended on a
+half-drawn card, which reads as broken rather than as "scroll for more".
+
+The fix is not to delete it on mobile but to **split it by job**:
+
+- `ui_kits/website/ChatPreviewCompact.jsx` renders its *first message only* — avatar,
+  bubble with a tail toward the avatar, and a muted `clinic · replies on WhatsApp`
+  line — at ~86px, placed directly above the primary CTA through `Hero`'s `beforeCta`
+  slot. Sitting on top of the button, it makes the button read as the reply to it.
+- The full mockup moves to the closest booking section to the footer (here "Find the
+  clinic"), where it has room to be seen whole and does a second job: showing what
+  booking actually looks like.
+- Both read `BOOKING_THREAD` from `clinic.js`. Never copy the message text into a
+  second component — the preview is the same conversation, not a retelling of it.
+
+Check the swap at **exactly 767px and 768px**: one full card at each width and never
+two, plus the compact preview only below the breakpoint.
+
+The hero then needs an ending. Group the quiet trailing lines (bilingual tagline,
+landmark) under a `1px rgba(255,255,255,0.15)` divider so the band closes deliberately
+instead of trailing off, and drop the secondary CTA to an underlined text link at a
+44px target — a second full-width pill competes with the primary.
+
 ### Mobile type and spacing
 
 Retuned at the **token** level in `ui_kits/website/index.html` under

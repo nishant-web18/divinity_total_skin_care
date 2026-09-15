@@ -36,6 +36,14 @@ export const CLINIC = {
   },
 };
 
+/* The WhatsApp exchange shown in the product visual. One copy: the hero renders its
+   first line as a compact preview on phones, and the booking section renders the full
+   thread lower down, so the two can never drift apart. */
+export const BOOKING_THREAD = [
+  { direction: "in", sender: "Divinity Total Skin Care", text: "Namaste. Which concern would you like to come in for?", time: "18:42" },
+  { direction: "out", text: "Acne scars — is Saturday possible?", time: "18:43" },
+];
+
 export const TRUST = [
   /* `short` is used in the 2-column mobile grid, where the full label wraps to three
      or more lines at 360px. Same fact, fewer words — never a different claim. */

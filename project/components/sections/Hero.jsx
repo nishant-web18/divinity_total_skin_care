@@ -9,7 +9,7 @@ export function Hero(props) {
         {
           background: props.tone === "canvas" ? "var(--color-lavender-mist)" : "var(--color-canopy-green)",
           width: "100%",
-          padding: props.compact ? "var(--spacing-32) var(--page-gutter) var(--spacing-32)" : "var(--section-padding-y) var(--page-gutter)",
+          padding: props.compact ? "var(--spacing-32) var(--page-gutter) var(--spacing-40)" : "var(--section-padding-y) var(--page-gutter)",
           fontFamily: "var(--font-dm-sans)",
           fontFeatureSettings: "var(--font-features)",
         },
@@ -50,21 +50,59 @@ export function Hero(props) {
               {props.body}
             </p>
           ) : null}
+          {props.beforeCta || null}
           {/* Marked so the floating action stack can watch it: while these CTAs are on
               screen the stack stays hidden rather than duplicating them. */}
-          <div data-hero-cta="" style={{ display: "flex", flexWrap: "wrap", gap: "var(--spacing-12)", marginTop: "var(--spacing-8)" }}>
+          <div data-hero-cta="" style={{ display: "flex", flexWrap: "wrap", flexDirection: props.compact ? "column" : "row", alignItems: props.compact ? "stretch" : "center", gap: props.compact ? "var(--spacing-8)" : "var(--spacing-12)", marginTop: props.compact ? 0 : "var(--spacing-8)" }}>
             {props.primaryLabel ? (
               <Button variant="primary" size="lg" full={props.compact} onClick={props.onPrimary}>
                 {props.primaryLabel}
               </Button>
             ) : null}
             {props.secondaryLabel ? (
-              <Button variant={props.tone === "canvas" ? "ghost" : "ghostOnDark"} size="lg" onClick={props.onSecondary}>
-                {props.secondaryLabel}
-              </Button>
+              props.compact ? (
+                /* A second full-width pill competes with the primary. A plain
+                   underlined link at a 44px target reads as the lesser action. */
+                <button
+                  type="button"
+                  onClick={props.onSecondary}
+                  style={{
+                    background: "transparent",
+                    border: "none",
+                    padding: 0,
+                    minHeight: "var(--tap-target)",
+                    alignSelf: "flex-start",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    cursor: "pointer",
+                    fontFamily: "var(--font-dm-sans)",
+                    fontSize: "var(--text-body)",
+                    fontWeight: "var(--font-weight-medium)",
+                    color: props.tone === "canvas" ? "var(--color-indigo-bloom)" : "var(--color-paper-white)",
+                    textDecoration: "underline",
+                    textUnderlineOffset: 4,
+                  }}
+                >
+                  {props.secondaryLabel}
+                </button>
+              ) : (
+                <Button variant={props.tone === "canvas" ? "ghost" : "ghostOnDark"} size="lg" onClick={props.onSecondary}>
+                  {props.secondaryLabel}
+                </Button>
+              )
             ) : null}
           </div>
-          {props.footer ? <div style={{ marginTop: props.compact ? "var(--spacing-8)" : "var(--spacing-32)" }}>{props.footer}</div> : null}
+          {props.footer ? (
+            <div
+              style={
+                props.compact
+                  ? { marginTop: "var(--spacing-16)", paddingTop: "var(--spacing-16)", borderTop: "1px solid rgba(255,255,255,0.15)" }
+                  : { marginTop: "var(--spacing-32)" }
+              }
+            >
+              {props.footer}
+            </div>
+          ) : null}
         </div>
         {props.visual ? <div style={{ minWidth: 0 }}>{props.visual}</div> : null}
       </div>

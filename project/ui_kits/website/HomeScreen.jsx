@@ -1,5 +1,6 @@
 import React from "react";
 import { autoFit } from "../../components/layout/grid.js";
+import { ChatPreviewCompact } from "./ChatPreviewCompact.jsx";
 import { MobileCarousel } from "../../components/layout/MobileCarousel.jsx";
 import { useIsMobile } from "../../components/hooks/useMediaQuery.js";
 import { Hero } from "../../components/sections/Hero.jsx";
@@ -11,12 +12,8 @@ import { PhotoFrame } from "../../components/media/PhotoFrame.jsx";
 import { Tag } from "../../components/tags/Tag.jsx";
 import { Button } from "../../components/buttons/Button.jsx";
 import { Pending } from "./Chrome.jsx";
-import { CLINIC, TRUST, SIGNATURE_TREATMENTS, DOCTORS, REVIEWS, TREATMENT_GROUPS } from "./clinic.js";
+import { BOOKING_THREAD, CLINIC, TRUST, SIGNATURE_TREATMENTS, DOCTORS, REVIEWS, TREATMENT_GROUPS } from "./clinic.js";
 
-const bookingThread = [
-  { direction: "in", sender: "Divinity Total Skin Care", text: "Namaste. Which concern would you like to come in for?", time: "18:42" },
-  { direction: "out", text: "Acne scars — is Saturday possible?", time: "18:43" },
-];
 
 export function HomeScreen(props) {
   const isMobile = useIsMobile();
@@ -30,12 +27,10 @@ export function HomeScreen(props) {
      The chat mock stays (it is what tells a patient the clinic answers on WhatsApp)
      but runs a single message on phones, which is what lets the section below it
      show at the fold. */
-  const heroVisual = (
+  const heroVisual = isMobile ? null : (
     <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--spacing-16)", alignItems: "stretch" }}>
-      <PhoneMockup contact="Divinity Total Skin Care" status="replies on WhatsApp" messages={isMobile ? bookingThread.slice(0, 1) : bookingThread} width={isMobile ? 240 : 228} composer={false} style={{ flex: "0 0 auto", maxWidth: "100%", marginInline: isMobile ? "auto" : undefined }} />
-      {isMobile ? null : (
-        <PhotoFrame ratio="3 / 4" placeholder="Clinic interior, Mansarovar — photo shoot pending" style={{ flex: "1 1 200px", minWidth: 0 }} />
-      )}
+      <PhoneMockup contact="Divinity Total Skin Care" status="replies on WhatsApp" messages={BOOKING_THREAD} width={228} composer={false} style={{ flex: "0 0 228px" }} />
+      <PhotoFrame ratio="3 / 4" placeholder="Clinic interior, Mansarovar — photo shoot pending" style={{ flex: "1 1 200px", minWidth: 0 }} />
     </div>
   );
 
@@ -53,6 +48,7 @@ export function HomeScreen(props) {
         secondaryLabel="See treatments"
         onSecondary={() => props.onNavigate("Treatments")}
         compact={isMobile}
+        beforeCta={isMobile ? <ChatPreviewCompact /> : null}
         visual={heroVisual}
         footer={
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-8)" }}>
@@ -186,6 +182,18 @@ export function HomeScreen(props) {
                 <div key={l}>{l}</div>
               ))}
             </address>
+            {/* The full thread lands here on phones rather than in the hero, where it
+                was being sliced in half at the fold. Next to "Find the clinic" it does
+                a second job: it shows what booking actually looks like. */}
+            {isMobile ? (
+              <PhoneMockup
+                contact="Divinity Total Skin Care"
+                status="replies on WhatsApp"
+                messages={BOOKING_THREAD}
+                composer={false}
+                style={{ maxWidth: 340, width: "100%", marginInline: "auto" }}
+              />
+            ) : null}
             <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--spacing-12)", alignItems: "center" }}>
               <Button variant="primary" size="lg" onClick={props.onBook}>Book on WhatsApp</Button>
               <Button variant="ghostOnDark" size="lg" href={CLINIC.mapsUrl}>Open in Maps</Button>
