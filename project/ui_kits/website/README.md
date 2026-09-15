@@ -2,6 +2,19 @@
 
 The clinic website from `uploads/divinity-total-skin-care-brief.md`, built on this design system. Open `index.html`.
 
+## Build
+
+`index.html` loads a prebuilt bundle (`dist/app.js`) instead of the dev-time Babel/unpkg loader used by the rest of the design system's preview cards. React, ReactDOM and every component/screen are compiled and bundled ahead of time, so the live page has no CDN dependency and no in-browser JSX transpile step.
+
+To rebuild after editing any `.jsx` file in this kit (or a shared component it imports), run from the repo root:
+
+```
+npm install   # first time only
+npm run build:website
+```
+
+This runs `scripts/build-website.mjs` (esbuild) against `main.jsx`, the bundle's entry point, and writes `dist/app.js` + `dist/app.js.map`. Use `npm run watch:website` while iterating. `dist/` is committed so the page works as soon as it's served — remember to rebuild and commit it whenever a source file changes.
+
 **Divinity Total Skin Care** — 21/280, Kaveri Path, Madhyam Marg, near KL Saini Cricket Stadium, Mansarovar, Jaipur 302020. Dermatology, skin, hair and laser; two DNB dermatologists; in practice since 2013.
 
 ## Screens

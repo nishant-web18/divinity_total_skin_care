@@ -10,10 +10,7 @@
 <link rel="stylesheet" href="../../styles.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400..700&display=swap">
-<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js"></script>
-<script src="../../assets/ds-dev-loader.js"></script>
+<script src="./dist/app.js" defer></script>
 <style>
   /* Kit-local: DM Sans carries no Devanagari, so the bilingual lines get a companion
      face. Everything else stays on the design system's single family. */
@@ -67,15 +64,5 @@
     </div>
   </div>
 </div>
-<script>
-  dsLoad(["./App.jsx"]).then(function (m) {
-    var host = document.getElementById("root");
-    host.textContent = "";
-    ReactDOM.createRoot(host).render(React.createElement(m.App));
-  }).catch(function (err) {
-    document.getElementById("root").textContent = String(err);
-    console.error(err);
-  });
-</script>
 </body>
 </html>

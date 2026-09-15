@@ -1,0 +1,16 @@
+{
+  "name": "divinity-total-skin-care-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:website": "node scripts/build-website.mjs",
+    "watch:website": "node scripts/build-website.mjs --watch"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0"
+  }
+}
