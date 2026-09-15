@@ -21,6 +21,13 @@
   @media (max-width: 900px) {
     body { --page-gutter: 24px; --section-padding-y: 48px; }
   }
+  @media (max-width: 380px) {
+    body { --page-gutter: 16px; --card-padding: 20px; --card-padding-lg: 20px; }
+  }
+  /* Flex and grid children default to min-width:auto — "never smaller than my
+     content" — which is what pushes a page sideways on a 320px screen. */
+  *, *::before, *::after { min-width: 0; }
+  img, video, svg, canvas { max-width: 100%; height: auto; }
 </style>
 <script type="application/ld+json">
 {

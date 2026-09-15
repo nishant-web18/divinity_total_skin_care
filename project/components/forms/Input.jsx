@@ -16,12 +16,18 @@ export function Input(props) {
         placeholder={props.placeholder}
         disabled={props.disabled}
         onChange={props.onChange}
+        autoComplete={props.autoComplete}
+        inputMode={props.inputMode}
+        enterKeyHint={props.enterKeyHint}
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
         style={{
           fontFamily: "var(--font-dm-sans)",
           fontFeatureSettings: "var(--font-features)",
+          /* Exactly 16px. Below that, iOS Safari force-zooms the page on focus and
+             never zooms back out — RESPONSIVE.md §10. */
           fontSize: "var(--text-body)",
+          minHeight: "var(--tap-target-cta)",
           lineHeight: "var(--leading-body)",
           color: "var(--text-primary)",
           background: "var(--color-paper-white)",

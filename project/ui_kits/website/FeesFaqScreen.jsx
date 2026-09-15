@@ -1,4 +1,5 @@
 import React from "react";
+import { autoFit } from "../../components/layout/grid.js";
 import { SectionBand } from "../../components/sections/SectionBand.jsx";
 import { PastelCard } from "../../components/cards/PastelCard.jsx";
 import { Tag } from "../../components/tags/Tag.jsx";
@@ -11,7 +12,7 @@ export function FeesFaqScreen(props) {
   return (
     <React.Fragment>
       <SectionBand tone="canvas">
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "var(--spacing-64)", alignItems: "start" }}>
+        <div style={{ display: "grid", gridTemplateColumns: autoFit(300), gap: "var(--spacing-64)", alignItems: "start" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-16)" }}>
             <Tag outline="indigo">Fees &amp; FAQ</Tag>
             <h1 style={{ fontSize: "clamp(36px, 4.2vw, 64px)", lineHeight: 1.05, letterSpacing: "var(--tracking-tighter)", fontWeight: "var(--font-weight-medium)", color: "var(--color-indigo-bloom)", margin: 0 }}>
@@ -41,7 +42,7 @@ export function FeesFaqScreen(props) {
       </SectionBand>
 
       <SectionBand tone="white">
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "var(--spacing-64)", alignItems: "start" }}>
+        <div style={{ display: "grid", gridTemplateColumns: autoFit(300), gap: "var(--spacing-64)", alignItems: "start" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-24)" }}>
             <h2 style={{ fontSize: "var(--text-heading)", lineHeight: "var(--leading-heading)", letterSpacing: "var(--tracking-tight)", fontWeight: "var(--font-weight-medium)", color: "var(--color-canopy-green)" }}>
               Questions patients actually ask

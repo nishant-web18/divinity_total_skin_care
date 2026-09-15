@@ -67,10 +67,10 @@ export function BookingDialog(props) {
               Book an appointment
             </h2>
             <p style={{ fontSize: "var(--text-body-sm)", color: "var(--color-graphite)", margin: 0, fontFamily: "var(--font-hi, var(--font-dm-sans))" }}>{CLINIC.hindi.whatsapp}</p>
-            <Input label="Name" placeholder="Your full name" full />
-            <Input label="Phone (WhatsApp)" placeholder="+91" type="tel" full />
-            <Input label="Treatment you are asking about" placeholder="Acne scars, laser hair removal, hair fall…" full />
-            <Input label="Preferred slot" placeholder="Saturday morning" full />
+            <Input label="Name" placeholder="Your full name" autoComplete="name" enterKeyHint="next" full />
+            <Input label="Phone (WhatsApp)" placeholder="+91" type="tel" autoComplete="tel" inputMode="numeric" enterKeyHint="next" full />
+            <Input label="Treatment you are asking about" placeholder="Acne scars, laser hair removal, hair fall…" enterKeyHint="next" full />
+            <Input label="Preferred slot" placeholder="Saturday morning" enterKeyHint="done" full />
             <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--spacing-12)", marginTop: "var(--spacing-8)" }}>
               <Button variant="primary" size="lg" onClick={() => setSent(true)}>Request appointment</Button>
               <Button variant="ghost" size="lg" href={CLINIC.whatsappUrl}>WhatsApp instead</Button>

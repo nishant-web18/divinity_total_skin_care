@@ -25,4 +25,13 @@
   --card-padding-lg: 32px;
   --element-gap: 8px;
   --grid-gap: 24px;
+
+  /* Touch targets — RESPONSIVE.md §1. 44px is the house standard (Apple HIG,
+     WCAG 2.5.5); primary CTAs get 48px (Material 3). */
+  --tap-target: 44px;
+  --tap-target-cta: 48px;
+  /* Reserved so the fixed conversion bar never covers the last line of content. */
+  --sticky-bar-clearance: 96px;
+  /* Body copy measure — 50-75ch is the readable band (Baymard, WCAG 1.4.8). */
+  --measure: 65ch;
 }

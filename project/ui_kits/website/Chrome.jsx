@@ -49,7 +49,8 @@ export function StickyBar(props) {
         zIndex: 40,
         background: "var(--color-canopy-green)",
         borderTop: "1px solid rgba(255,255,255,0.14)",
-        padding: "10px var(--page-gutter)",
+        /* Clears the iPhone home indicator. */
+        padding: "8px var(--page-gutter) calc(8px + env(safe-area-inset-bottom, 0px))",
         fontFamily: "var(--font-dm-sans)",
         fontFeatureSettings: "var(--font-features)",
       }}
@@ -63,12 +64,17 @@ export function StickyBar(props) {
             target={it.href.indexOf("http") === 0 ? "_blank" : undefined}
             rel={it.href.indexOf("http") === 0 ? "noreferrer" : undefined}
             style={{
-              flex: "1 1 160px",
+              /* Basis small enough that three actions fit a 320px screen in one row
+                 instead of forcing the page sideways. */
+              flex: "1 1 88px",
+              minWidth: 0,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              justifyContent: "center",
               gap: 1,
-              padding: "10px 16px",
+              minHeight: "var(--tap-target)",
+              padding: "6px 12px",
               borderRadius: "var(--radius-buttons)",
               textDecoration: "none",
               background: it.tone === "primary" ? "var(--action-primary-bg)" : "transparent",
@@ -76,8 +82,20 @@ export function StickyBar(props) {
               color: "var(--color-paper-white)",
             }}
           >
-            <span style={{ fontSize: "var(--text-body-sm)", fontWeight: "var(--font-weight-semibold)" }}>{it.label}</span>
-            <span style={{ fontSize: 11, color: it.tone === "primary" ? "rgba(255,255,255,0.85)" : "var(--color-mint-wash)" }}>{it.sub}</span>
+            <span style={{ fontSize: "var(--text-body-sm)", fontWeight: "var(--font-weight-semibold)", whiteSpace: "nowrap" }}>{it.label}</span>
+            <span
+              style={{
+                fontSize: "var(--text-caption)",
+                lineHeight: 1.2,
+                color: it.tone === "primary" ? "rgba(255,255,255,0.85)" : "var(--color-mint-wash)",
+                maxWidth: "100%",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {it.sub}
+            </span>
           </a>
         ))}
       </div>

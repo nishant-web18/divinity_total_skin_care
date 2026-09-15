@@ -11,9 +11,10 @@ const base = {
   border: "1px solid transparent",
   boxShadow: "none",
   textDecoration: "none",
-  whiteSpace: "nowrap",
   cursor: "pointer",
   transition: "var(--transition-base)",
+  /* Touch has no hover state, so without a press cue the control feels dead. */
+  WebkitTapHighlightColor: "transparent",
 };
 
 const variants = {
@@ -52,10 +53,12 @@ const variants = {
   },
 };
 
+/* Minimum heights, not fixed ones: the label still sets the height when it wraps.
+   44px is the house tap target, 48px for the primary CTA — RESPONSIVE.md §1/§5. */
 const sizes = {
-  sm: { fontSize: "var(--text-body-sm)", padding: "8px 16px" },
-  md: { fontSize: "var(--text-body-sm)", padding: "8px 20px" },
-  lg: { fontSize: "var(--text-body)", padding: "12px 24px" },
+  sm: { fontSize: "var(--text-body-sm)", padding: "8px 16px", minHeight: "var(--tap-target)", minWidth: "var(--tap-target)" },
+  md: { fontSize: "var(--text-body-sm)", padding: "8px 20px", minHeight: "var(--tap-target)", minWidth: "var(--tap-target)" },
+  lg: { fontSize: "var(--text-body)", padding: "12px 24px", minHeight: "var(--tap-target-cta)", minWidth: "var(--tap-target)" },
 };
 
 export function Button(props) {

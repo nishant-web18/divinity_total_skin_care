@@ -1,4 +1,5 @@
 import React from "react";
+import { autoFit } from "../layout/grid.js";
 import { Button } from "../buttons/Button.jsx";
 
 export function Hero(props) {
@@ -20,7 +21,7 @@ export function Hero(props) {
           maxWidth: "var(--page-max-width)",
           margin: "0 auto",
           display: "grid",
-          gridTemplateColumns: props.visual ? "repeat(auto-fit, minmax(340px, 1fr))" : "minmax(0, 1fr)",
+          gridTemplateColumns: props.visual ? autoFit(340) : "minmax(0, 1fr)",
           gap: "var(--spacing-64)",
           alignItems: "center",
         }}

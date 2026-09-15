@@ -1,4 +1,5 @@
 import React from "react";
+import { autoFit } from "../../components/layout/grid.js";
 import { SectionBand } from "../../components/sections/SectionBand.jsx";
 import { PastelCard } from "../../components/cards/PastelCard.jsx";
 import { PhotoFrame } from "../../components/media/PhotoFrame.jsx";
@@ -33,7 +34,7 @@ export function DoctorsScreen(props) {
 
       {DOCTORS.map((d, i) => (
         <SectionBand key={d.name} tone={i === 0 ? "white" : "mint"}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "var(--spacing-64)" }}>
+          <div style={{ display: "grid", gridTemplateColumns: autoFit(300), gap: "var(--spacing-64)" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-16)", minWidth: 0 }}>
               <PhotoFrame ratio="4 / 5" placeholder={"Portrait of " + d.name + " — photo shoot pending"} style={{ maxWidth: 380 }} />
               <div style={{ background: i === 0 ? "var(--color-sage-wash)" : "var(--color-paper-white)", borderRadius: "var(--radius-cards-sm)", padding: "var(--card-padding)", maxWidth: 380 }}>

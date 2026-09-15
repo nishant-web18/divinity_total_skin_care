@@ -1,4 +1,5 @@
 import React from "react";
+import { autoFit } from "../../components/layout/grid.js";
 import { SectionBand } from "../../components/sections/SectionBand.jsx";
 import { ProductCard } from "../../components/cards/ProductCard.jsx";
 import { Tag } from "../../components/tags/Tag.jsx";
@@ -14,7 +15,7 @@ export function ContactScreen(props) {
   return (
     <React.Fragment>
       <SectionBand tone="dark">
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "var(--spacing-64)" }}>
+        <div style={{ display: "grid", gridTemplateColumns: autoFit(300), gap: "var(--spacing-64)" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-24)", minWidth: 0 }}>
             <Tag tone="onDark">Contact &amp; book</Tag>
             <h1 style={{ fontSize: "clamp(36px, 4.2vw, 64px)", lineHeight: 1.05, letterSpacing: "var(--tracking-tighter)", fontWeight: "var(--font-weight-medium)", color: "var(--color-paper-white)", margin: 0 }}>
@@ -55,7 +56,7 @@ export function ContactScreen(props) {
       </SectionBand>
 
       <SectionBand tone="white">
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "var(--spacing-64)", alignItems: "start" }}>
+        <div style={{ display: "grid", gridTemplateColumns: autoFit(300), gap: "var(--spacing-64)", alignItems: "start" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-20)" }}>
             <h2 style={{ fontSize: "var(--text-heading)", lineHeight: "var(--leading-heading)", letterSpacing: "var(--tracking-tight)", fontWeight: "var(--font-weight-medium)", color: "var(--color-canopy-green)" }}>
               Request an appointment

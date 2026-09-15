@@ -1,4 +1,5 @@
 import React from "react";
+import { autoFit } from "../../components/layout/grid.js";
 import { Hero } from "../../components/sections/Hero.jsx";
 import { SectionBand } from "../../components/sections/SectionBand.jsx";
 import { PastelCard } from "../../components/cards/PastelCard.jsx";
@@ -41,7 +42,7 @@ export function TreatmentsScreen(props) {
           <h2 style={{ fontSize: "var(--text-heading-lg)", lineHeight: "var(--leading-heading-lg)", letterSpacing: "var(--tracking-tight)", fontWeight: "var(--font-weight-medium)", color: "var(--color-canopy-green)", maxWidth: 680 }}>
             The six that get their own page
           </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "var(--grid-gap)" }}>
+          <div style={{ display: "grid", gridTemplateColumns: autoFit(300), gap: "var(--grid-gap)" }}>
             {SIGNATURE_TREATMENTS.map((t, i) => (
               <PastelCard key={t.title} index={i} tag={<Tag tone={["mint", "sage", "sky", "cream", "lilac", "peach"][i]}>{t.tag}</Tag>} title={t.title} titleSize="var(--text-heading-sm)" body={t.body}>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--spacing-8)", alignItems: "center" }}>
@@ -64,7 +65,7 @@ export function TreatmentsScreen(props) {
               Grouped as a patient would ask for it, not as a directory auto-fills it.
             </p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "var(--grid-gap)" }}>
+          <div style={{ display: "grid", gridTemplateColumns: autoFit(300), gap: "var(--grid-gap)" }}>
             {TREATMENT_GROUPS.map((g) => (
               <PastelCard key={g.heading} tone={g.tone} title={g.heading} titleSize="var(--text-subheading)">
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--spacing-8)" }}>
@@ -79,7 +80,7 @@ export function TreatmentsScreen(props) {
       </SectionBand>
 
       <SectionBand tone="mint">
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "var(--spacing-64)", alignItems: "center" }}>
+        <div style={{ display: "grid", gridTemplateColumns: autoFit(300), gap: "var(--spacing-64)", alignItems: "center" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-20)", minWidth: 0 }}>
             <Tag outline="teal">In the clinic's own words</Tag>
             <h2 style={{ fontSize: "var(--text-heading)", lineHeight: "var(--leading-heading)", letterSpacing: "var(--tracking-tight)", fontWeight: "var(--font-weight-medium)", color: "var(--color-canopy-green)" }}>

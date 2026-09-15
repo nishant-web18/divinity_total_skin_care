@@ -1,4 +1,5 @@
 import React from "react";
+import { autoFit } from "../../components/layout/grid.js";
 import { Hero } from "../../components/sections/Hero.jsx";
 import { SectionBand } from "../../components/sections/SectionBand.jsx";
 import { PastelCard } from "../../components/cards/PastelCard.jsx";
@@ -24,7 +25,7 @@ export function HomeScreen(props) {
   const heroVisual = (
     <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--spacing-16)", alignItems: "stretch" }}>
       <PhoneMockup contact="Divinity Total Skin Care" status="replies on WhatsApp" messages={bookingThread} width={228} composer={false} style={{ flex: "0 0 228px" }} />
-      <PhotoFrame ratio="3 / 4" placeholder="Clinic interior, Mansarovar — photo shoot pending" style={{ flex: "1 1 200px", minWidth: 180 }} />
+      <PhotoFrame ratio="3 / 4" placeholder="Clinic interior, Mansarovar — photo shoot pending" style={{ flex: "1 1 200px", minWidth: 0 }} />
     </div>
   );
 
@@ -49,7 +50,7 @@ export function HomeScreen(props) {
       />
 
       <SectionBand tone="white" paddingY="var(--spacing-56)">
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "var(--grid-gap)" }}>
+        <div style={{ display: "grid", gridTemplateColumns: autoFit(200), gap: "var(--grid-gap)" }}>
           {TRUST.map((t) => (
             <div key={t.value} style={{ display: "flex", flexDirection: "column", gap: 4 }}>
               <span style={{ fontSize: "var(--text-heading)", lineHeight: "var(--leading-heading)", letterSpacing: "var(--tracking-tight)", fontWeight: "var(--font-weight-bold)", color: "var(--color-canopy-green)" }}>{t.value}</span>
@@ -67,7 +68,7 @@ export function HomeScreen(props) {
             </h2>
             <Button variant="ghost" size="md" onClick={() => props.onNavigate("Treatments")}>All treatments</Button>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "var(--grid-gap)" }}>
+          <div style={{ display: "grid", gridTemplateColumns: autoFit(300), gap: "var(--grid-gap)" }}>
             {SIGNATURE_TREATMENTS.map((t, i) => (
               <PastelCard key={t.title} index={i} tag={<Tag tone={["mint", "sage", "sky", "cream", "lilac", "peach"][i]}>{t.tag}</Tag>} title={t.title} titleSize="var(--text-heading-sm)" body={t.body} />
             ))}
@@ -79,7 +80,7 @@ export function HomeScreen(props) {
       </SectionBand>
 
       <SectionBand tone="white">
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "var(--spacing-64)", alignItems: "center" }}>
+        <div style={{ display: "grid", gridTemplateColumns: autoFit(300), gap: "var(--spacing-64)", alignItems: "center" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-20)", minWidth: 0 }}>
             <Tag tone="mint">Medical dermatology</Tag>
             <h2 style={{ fontSize: "var(--text-heading)", lineHeight: "var(--leading-heading)", letterSpacing: "var(--tracking-tight)", fontWeight: "var(--font-weight-medium)", color: "var(--color-canopy-green)" }}>
@@ -103,7 +104,7 @@ export function HomeScreen(props) {
           <h2 style={{ fontSize: "var(--text-heading-lg)", lineHeight: "var(--leading-heading-lg)", letterSpacing: "var(--tracking-tight)", fontWeight: "var(--font-weight-medium)", color: "var(--color-indigo-bloom)" }}>
             The two doctors you will see
           </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "var(--grid-gap)" }}>
+          <div style={{ display: "grid", gridTemplateColumns: autoFit(320), gap: "var(--grid-gap)" }}>
             {DOCTORS.map((d, i) => (
               <PastelCard key={d.name} tone={i === 0 ? "sage" : "lilac"} title={d.name} titleSize="var(--text-heading-sm)" body={d.role}>
                 <ProductCard hairline>
@@ -133,7 +134,7 @@ export function HomeScreen(props) {
             </h2>
             <span style={{ fontSize: "var(--text-caption)", color: "var(--color-slate)" }}>Practo patient stories · names withheld until consent is in hand</span>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "var(--grid-gap)" }}>
+          <div style={{ display: "grid", gridTemplateColumns: autoFit(260), gap: "var(--grid-gap)" }}>
             {REVIEWS.map((r) => (
               <blockquote key={r.text} style={{ margin: 0, background: "var(--color-paper-white)", borderRadius: "var(--radius-cards-sm)", padding: "var(--card-padding)", display: "flex", flexDirection: "column", gap: "var(--spacing-12)" }}>
                 <p style={{ fontSize: "var(--text-body)", lineHeight: "var(--leading-body)", color: "var(--color-ink-black)", margin: 0 }}>{r.text}</p>
@@ -145,7 +146,7 @@ export function HomeScreen(props) {
       </SectionBand>
 
       <SectionBand tone="dark">
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "var(--spacing-48)" }}>
+        <div style={{ display: "grid", gridTemplateColumns: autoFit(300), gap: "var(--spacing-48)" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-16)" }}>
             <h2 style={{ fontSize: "var(--text-heading)", lineHeight: "var(--leading-heading)", letterSpacing: "var(--tracking-tight)", fontWeight: "var(--font-weight-medium)", color: "var(--color-paper-white)" }}>
               Find the clinic

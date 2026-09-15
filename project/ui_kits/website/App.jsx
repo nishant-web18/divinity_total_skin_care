@@ -18,19 +18,34 @@ const screens = {
   Contact: ContactScreen,
 };
 
+/* Each screen gets a URL so it can be linked, shared, indexed and audited
+   individually — a clinic site whose treatment page has no address is invisible. */
+const slugs = { Home: "", Treatments: "treatments", Doctors: "doctors", "Fees & FAQ": "fees-faq", Contact: "contact" };
+const pages = Object.keys(slugs);
+const pageForHash = (hash) => pages.find((p) => slugs[p] === String(hash || "").replace(/^#/, "")) || "Home";
+
 export function App() {
-  const [page, setPage] = React.useState("Home");
+  const [page, setPage] = React.useState(() => pageForHash(window.location.hash));
   const [booking, setBooking] = React.useState(false);
 
+  React.useEffect(() => {
+    const onHash = () => { setPage(pageForHash(window.location.hash)); window.scrollTo(0, 0); };
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
+
   const navigate = (next) => {
-    setPage(screens[next] ? next : "Home");
-    window.scrollTo(0, 0);
+    const target = screens[next] ? next : "Home";
+    const slug = slugs[target];
+    if (pageForHash(window.location.hash) === target) window.scrollTo(0, 0);
+    window.location.hash = slug ? "#" + slug : "";
+    setPage(target);
   };
 
   const Screen = screens[page] || HomeScreen;
 
   return (
-    <div style={{ background: "var(--surface-page-canvas)", minHeight: "100vh", paddingBottom: 104 }}>
+    <div style={{ background: "var(--surface-page-canvas)", minHeight: "100dvh", paddingBottom: "var(--sticky-bar-clearance)" }}>
       <TopNav
         brand={CLINIC.name}
         links={NAV_LINKS}

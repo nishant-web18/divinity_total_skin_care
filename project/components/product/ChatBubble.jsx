@@ -29,7 +29,7 @@ export function ChatBubble(props) {
         ) : null}
         <div>{props.children}</div>
         {props.time ? (
-          <div style={{ fontSize: 10, color: "var(--color-slate)", textAlign: "right", marginTop: 2 }}>{props.time}</div>
+          <div style={{ fontSize: "var(--text-caption)", lineHeight: 1.2, color: "var(--color-slate)", textAlign: "right", marginTop: 2 }}>{props.time}</div>
         ) : null}
       </div>
     </div>

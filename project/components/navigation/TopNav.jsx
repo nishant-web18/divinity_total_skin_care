@@ -35,6 +35,9 @@ export function TopNav(props) {
     textDecorationThickness: active === l ? "2px" : undefined,
     opacity: active === l ? 1 : 0.78,
     whiteSpace: "nowrap",
+    display: "flex",
+    alignItems: "center",
+    minHeight: "var(--tap-target)",
   });
 
   return (
@@ -58,7 +61,8 @@ export function TopNav(props) {
           padding: compact ? "16px var(--page-gutter)" : "24px var(--page-gutter)",
           display: "flex",
           alignItems: "center",
-          gap: compact ? "var(--spacing-16)" : "var(--spacing-32)",
+          flexWrap: "wrap",
+          gap: compact ? "var(--spacing-12)" : "var(--spacing-32)",
         }}
       >
         <a
@@ -73,6 +77,10 @@ export function TopNav(props) {
             whiteSpace: compact ? "normal" : "nowrap",
             marginRight: compact ? "auto" : undefined,
             lineHeight: 1.15,
+            display: "flex",
+            alignItems: "center",
+            minHeight: "var(--tap-target)",
+            minWidth: 0,
           }}
         >
           {props.brand || "chat for impact"}
@@ -94,7 +102,7 @@ export function TopNav(props) {
             ))}
           </nav>
         )}
-        <div style={{ display: "flex", alignItems: "center", gap: compact ? "var(--spacing-12)" : "var(--spacing-20)" }}>
+        <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", justifyContent: "flex-end", minWidth: 0, gap: compact ? "var(--spacing-8)" : "var(--spacing-20)" }}>
           {compact || props.locale === null ? null : (
             <span style={{ fontSize: "var(--text-body-sm)", fontWeight: "var(--font-weight-medium)", color: "var(--color-graphite)", whiteSpace: "nowrap" }}>
               {props.locale || "EN"}
