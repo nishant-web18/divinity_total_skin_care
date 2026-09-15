@@ -1,2 +1,4 @@
 node_modules/
 .audit/
+# Deploy output, assembled by `npm run build` on the host.
+/dist/

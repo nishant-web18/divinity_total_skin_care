@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build": "npm run build:website && node scripts/assemble-dist.mjs",
     "build:website": "node scripts/build-website.mjs",
     "watch:website": "node scripts/build-website.mjs --watch"
   },
