@@ -48,7 +48,7 @@ export function App() {
   return (
     <div style={{ background: "var(--surface-page-canvas)", minHeight: "100dvh", paddingBottom: "var(--sticky-bar-clearance)" }}>
       <TopNav
-        brand={<Logo height={38} style={{ display: "block", maxWidth: "100%" }} />}
+        brand={<Logo height={46} style={{ display: "block", maxWidth: "100%" }} />}
         brandLabel={CLINIC.name}
         links={NAV_LINKS}
         active={page === "Home" ? undefined : page}

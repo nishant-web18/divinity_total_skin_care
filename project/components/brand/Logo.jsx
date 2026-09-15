@@ -65,7 +65,7 @@ export function Logo(props) {
 
   /* Horizontal lockup — the only shape that stays legible in a 44px header row. */
   return (
-    <svg viewBox="0 0 545 170" height={height} role="img" aria-label={label} style={props.style}>
+    <svg viewBox="5 4 533 150" height={height} role="img" aria-label={label} style={props.style}>
       <title>{label}</title>
       <g transform="translate(-16.9,34) scale(0.448)">
         <Arcs tone={tone} />
@@ -74,7 +74,7 @@ export function Logo(props) {
         div&#x131;nity
       </text>
       <path fill={crossFill} transform="translate(340.3,17.8) scale(0.66)" d="M0 0 h13 v-13 h13 v13 h13 v13 h-13 v13 h-13 v-13 h-13 Z" />
-      <text x="214" y="148" fontFamily={WORD_FACE} fontSize="19.5" fontWeight="600" letterSpacing="2.9" fill={tagFill}>
+      <text x="214" y="148" fontFamily={WORD_FACE} fontSize="28" fontWeight="600" letterSpacing="2.2" fill={tagFill}>
         Total Skin Care
       </text>
     </svg>

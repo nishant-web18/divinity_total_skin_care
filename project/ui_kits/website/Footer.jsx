@@ -11,7 +11,7 @@ export function Footer(props) {
     <footer style={{ background: "var(--color-cloud-gray)", padding: "var(--spacing-64) var(--page-gutter) var(--spacing-40)", fontFamily: "var(--font-dm-sans)", fontFeatureSettings: "var(--font-features)" }}>
       <div style={{ maxWidth: "var(--page-max-width)", margin: "0 auto", display: "flex", flexWrap: "wrap", gap: "var(--spacing-64)" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-12)", minWidth: 0, flex: "1 1 240px" }}>
-          <Logo height={52} style={{ display: "block", maxWidth: "100%" }} />
+          <Logo height={64} style={{ display: "block", maxWidth: "100%" }} />
           <address style={{ fontStyle: "normal", fontSize: "var(--text-body-sm)", lineHeight: 1.5, color: "var(--color-graphite)" }}>
             {CLINIC.addressLines.map((l) => (
               <div key={l}>{l}</div>
