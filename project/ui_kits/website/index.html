@@ -28,6 +28,21 @@
      content" — which is what pushes a page sideways on a 320px screen. */
   *, *::before, *::after { min-width: 0; }
   img, video, svg, canvas { max-width: 100%; height: auto; }
+  /* The conversion bar is the mobile answer to "the phone number must always be one
+     tap away". From 1024px the header carries its own Book appointment CTA and the
+     full address sits in the footer, so the bar is redundant chrome. */
+  @media (min-width: 1024px) {
+    [data-sticky-bar] { display: none; }
+    body { --sticky-bar-clearance: 0px; }
+  }
+  /* The FAQ uses <details>; suppress the native marker in favour of the +/x glyph. */
+  summary::-webkit-details-marker { display: none; }
+  summary::marker { content: ""; }
+  details[open] > summary > span[aria-hidden] { transform: rotate(45deg); }
+  summary > span[aria-hidden] { transition: transform 160ms cubic-bezier(.2,0,.2,1); }
+  @media (prefers-reduced-motion: reduce) {
+    summary > span[aria-hidden] { transition: none; }
+  }
 </style>
 <script type="application/ld+json">
 {

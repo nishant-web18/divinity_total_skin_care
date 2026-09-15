@@ -8,7 +8,6 @@ import { Pending } from "./Chrome.jsx";
 import { FAQS } from "./clinic.js";
 
 export function FeesFaqScreen(props) {
-  const [open, setOpen] = React.useState(0);
   return (
     <React.Fragment>
       <SectionBand tone="canvas">
@@ -48,24 +47,23 @@ export function FeesFaqScreen(props) {
               Questions patients actually ask
             </h2>
             <div style={{ display: "flex", flexDirection: "column" }}>
+              {/* <details> rather than a state-driven panel: the answer is in the
+                  document at load instead of being injected on click, so it is
+                  readable, findable and indexable — RESPONSIVE.md §6. */}
               {FAQS.map((f, i) => (
-                <div key={f.q} style={{ borderTop: "1px solid var(--color-frost-gray)", padding: "16px 0" }}>
-                  <button
-                    type="button"
-                    onClick={() => setOpen(open === i ? -1 : i)}
-                    style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, background: "transparent", border: "none", padding: 0, cursor: "pointer", textAlign: "left", fontSize: "var(--text-body-lg)", fontWeight: 500, color: "var(--color-canopy-green)" }}
+                <details key={f.q} open={i === 0} style={{ borderTop: "1px solid var(--color-frost-gray)", padding: "4px 0" }}>
+                  <summary
+                    style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, minHeight: "var(--tap-target)", listStyle: "none", cursor: "pointer", textAlign: "left", fontSize: "var(--text-body-lg)", fontWeight: 500, color: "var(--color-canopy-green)" }}
                   >
                     {f.q}
-                    <span style={{ color: "var(--color-slate)", fontSize: 20, lineHeight: 1 }}>{open === i ? "\u2013" : "+"}</span>
-                  </button>
-                  {open === i ? (
-                    <div style={{ marginTop: 10 }}>
-                      {f.pending ? <Pending>{f.pending} — confirming with the clinic</Pending> : (
-                        <p style={{ margin: 0, fontSize: "var(--text-body)", lineHeight: "var(--leading-body)", color: "var(--color-graphite)", maxWidth: "58ch" }}>{f.a}</p>
-                      )}
-                    </div>
-                  ) : null}
-                </div>
+                    <span aria-hidden="true" style={{ color: "var(--color-slate)", fontSize: 20, lineHeight: 1, flex: "0 0 auto" }}>+</span>
+                  </summary>
+                  <div style={{ paddingBottom: 12 }}>
+                    {f.pending ? <Pending>{f.pending} — confirming with the clinic</Pending> : (
+                      <p style={{ margin: 0, fontSize: "var(--text-body)", lineHeight: "var(--leading-body)", color: "var(--color-graphite)", maxWidth: "var(--measure)" }}>{f.a}</p>
+                    )}
+                  </div>
+                </details>
               ))}
             </div>
           </div>

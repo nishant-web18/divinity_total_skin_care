@@ -19,9 +19,11 @@ export function Pending(props) {
           padding: inline ? "3px 10px" : "8px 12px",
           fontFamily: "var(--font-dm-sans)",
           fontFeatureSettings: "var(--font-features)",
-          fontSize: "var(--text-caption)",
+          /* These chips carry real sentences naming what is still unconfirmed, so
+             they read as content, not as a caption — 14px, not the 12px floor. */
+          fontSize: "var(--text-body-sm)",
           fontWeight: "var(--font-weight-semibold)",
-          lineHeight: 1.3,
+          lineHeight: 1.35,
         },
         props.style
       )}
@@ -41,6 +43,7 @@ export function StickyBar(props) {
   ];
   return (
     <div
+      data-sticky-bar=""
       style={{
         position: "fixed",
         left: 0,
@@ -74,7 +77,8 @@ export function StickyBar(props) {
               justifyContent: "center",
               gap: 1,
               minHeight: "var(--tap-target)",
-              padding: "6px 12px",
+              padding: "6px 8px",
+              overflow: "hidden",
               borderRadius: "var(--radius-buttons)",
               textDecoration: "none",
               background: it.tone === "primary" ? "var(--action-primary-bg)" : "transparent",
@@ -82,7 +86,9 @@ export function StickyBar(props) {
               color: "var(--color-paper-white)",
             }}
           >
-            <span style={{ fontSize: "var(--text-body-sm)", fontWeight: "var(--font-weight-semibold)", whiteSpace: "nowrap" }}>{it.label}</span>
+            {/* Wraps rather than truncates: "Call the clinic" cut to "Call th…" on a
+                320px screen is the one label on the page that must stay readable. */}
+            <span style={{ fontSize: "var(--text-body-sm)", fontWeight: "var(--font-weight-semibold)", lineHeight: 1.2, textAlign: "center" }}>{it.label}</span>
             <span
               style={{
                 fontSize: "var(--text-caption)",

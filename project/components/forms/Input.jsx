@@ -40,7 +40,7 @@ export function Input(props) {
         }}
       />
       {props.hint ? (
-        <span style={{ fontFamily: "var(--font-dm-sans)", fontSize: "var(--text-caption)", color: "var(--color-slate)" }}>{props.hint}</span>
+        <span style={{ fontFamily: "var(--font-dm-sans)", fontSize: "var(--text-body-sm)", lineHeight: 1.4, color: "var(--color-slate)" }}>{props.hint}</span>
       ) : null}
     </label>
   );

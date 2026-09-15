@@ -61,7 +61,7 @@ export function TreatmentsScreen(props) {
             <h2 style={{ fontSize: "var(--text-heading)", lineHeight: "var(--leading-heading)", letterSpacing: "var(--tracking-tight)", fontWeight: "var(--font-weight-medium)", color: "var(--color-indigo-bloom)" }}>
               Everything the clinic treats
             </h2>
-            <p style={{ fontSize: "var(--text-body)", color: "var(--color-aubergine)", margin: 0 }}>
+            <p style={{ fontSize: "var(--text-body)", color: "var(--color-aubergine)", margin: 0, maxWidth: "var(--measure)" }}>
               Grouped as a patient would ask for it, not as a directory auto-fills it.
             </p>
           </div>
@@ -107,7 +107,7 @@ export function TreatmentsScreen(props) {
       </SectionBand>
 
       <SectionBand tone="white" paddingY="var(--spacing-56)">
-        <p style={{ fontSize: "var(--text-body-sm)", lineHeight: "var(--leading-body-sm)", color: "var(--color-graphite)", margin: 0, maxWidth: "80ch" }}>
+        <p style={{ fontSize: "var(--text-body-sm)", lineHeight: "var(--leading-body-sm)", color: "var(--color-graphite)", margin: 0, maxWidth: "var(--measure)" }}>
           <strong style={{ color: "var(--color-canopy-green)" }}>Medical disclaimer.</strong> Nothing on this page is a diagnosis or a promise of outcome. Treatment suitability, session counts and aftercare are decided by the treating dermatologist after an in-clinic examination. Results vary from person to person.
         </p>
       </SectionBand>

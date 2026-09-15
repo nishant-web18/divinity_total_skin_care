@@ -73,7 +73,7 @@ export function HomeScreen(props) {
               <PastelCard key={t.title} index={i} tag={<Tag tone={["mint", "sage", "sky", "cream", "lilac", "peach"][i]}>{t.tag}</Tag>} title={t.title} titleSize="var(--text-heading-sm)" body={t.body} />
             ))}
           </div>
-          <p style={{ fontSize: "var(--text-body-sm)", color: "var(--color-aubergine)", margin: 0, maxWidth: "70ch" }}>
+          <p style={{ fontSize: "var(--text-body-sm)", color: "var(--color-aubergine)", margin: 0, maxWidth: "var(--measure)" }}>
             Medical information only. Suitability and the number of sessions are decided after an in-clinic examination, and results vary from person to person.
           </p>
         </div>
@@ -132,7 +132,7 @@ export function HomeScreen(props) {
             <h2 style={{ fontSize: "var(--text-heading)", lineHeight: "var(--leading-heading)", letterSpacing: "var(--tracking-tight)", fontWeight: "var(--font-weight-medium)", color: "var(--color-canopy-green)" }}>
               In patients' words
             </h2>
-            <span style={{ fontSize: "var(--text-caption)", color: "var(--color-slate)" }}>Practo patient stories · names withheld until consent is in hand</span>
+            <span style={{ fontSize: "var(--text-body-sm)", color: "var(--color-slate)" }}>Practo patient stories · names withheld until consent is in hand</span>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: autoFit(260), gap: "var(--grid-gap)" }}>
             {REVIEWS.map((r) => (

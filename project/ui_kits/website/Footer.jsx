@@ -45,7 +45,7 @@ export function Footer(props) {
       </div>
 
       <div style={{ maxWidth: "var(--page-max-width)", margin: "var(--spacing-48) auto 0", paddingTop: "var(--spacing-20)", borderTop: "1px solid var(--color-frost-gray)", display: "flex", flexWrap: "wrap", gap: "var(--spacing-16)", justifyContent: "space-between", fontSize: "var(--text-caption)", lineHeight: 1.5, color: "var(--color-slate)" }}>
-        <span style={{ maxWidth: "var(--measure)" }}>
+        <span style={{ maxWidth: "var(--measure)", fontSize: "var(--text-body-sm)" }}>
           Information on this site is for general guidance and is not a diagnosis. Results vary from person to person. {CLINIC.name}, {CLINIC.locality} — in practice since {CLINIC.established}.
         </span>
         <span style={{ display: "flex", flexWrap: "wrap", gap: "var(--spacing-20)" }}>

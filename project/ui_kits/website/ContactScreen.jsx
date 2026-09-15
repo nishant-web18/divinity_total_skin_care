@@ -71,10 +71,10 @@ export function ContactScreen(props) {
               </div>
             ) : (
               <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-16)", maxWidth: 480 }}>
-                <Input label="Name" placeholder="Your full name" full />
-                <Input label="Phone (WhatsApp)" placeholder="+91" type="tel" full />
-                <Input label="Treatment you are asking about" placeholder="Acne scars, laser hair removal, hair fall…" full />
-                <Input label="Preferred slot" placeholder="Saturday morning" hint="Four fields, nothing else — the rest is asked in the consultation." full />
+                <Input label="Name" placeholder="Your full name" autoComplete="name" enterKeyHint="next" full />
+                <Input label="Phone (WhatsApp)" placeholder="+91" type="tel" autoComplete="tel" inputMode="numeric" enterKeyHint="next" full />
+                <Input label="Treatment you are asking about" placeholder="Acne scars, laser hair removal, hair fall…" enterKeyHint="next" full />
+                <Input label="Preferred slot" placeholder="Saturday morning" enterKeyHint="done" hint="Four fields, nothing else — the rest is asked in the consultation." full />
                 <Button variant="primary" size="lg" onClick={() => setSent(true)}>Request appointment</Button>
               </div>
             )}
@@ -85,10 +85,10 @@ export function ContactScreen(props) {
               <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-12)" }}>
                 <div style={{ background: "var(--color-sky-wash)", borderRadius: "var(--radius-icons)", padding: "var(--card-padding)", display: "flex", flexDirection: "column", gap: 6 }}>
                   <span style={{ fontSize: "var(--text-body-sm)", fontWeight: 600, color: "var(--color-deep-teal)" }}>Map embed</span>
-                  <span style={{ fontSize: "var(--text-caption)", color: "var(--color-graphite)", fontVariantNumeric: "tabular-nums" }}>
+                  <span style={{ fontSize: "var(--text-body-sm)", color: "var(--color-graphite)", fontVariantNumeric: "tabular-nums" }}>
                     {CLINIC.lat}, {CLINIC.lng} · Google place pin
                   </span>
-                  <a href={CLINIC.mapsUrl} target="_blank" rel="noreferrer" style={{ fontSize: "var(--text-body-sm)", fontWeight: 600 }}>Open the live location</a>
+                  <a href={CLINIC.mapsUrl} target="_blank" rel="noreferrer" style={{ fontSize: "var(--text-body-sm)", fontWeight: 600, display: "inline-flex", alignItems: "center", minHeight: "var(--tap-target)", alignSelf: "flex-start" }}>Open the live location</a>
                 </div>
                 <p style={{ margin: 0, fontSize: "var(--text-body-sm)", lineHeight: "var(--leading-body-sm)", color: "var(--color-graphite)" }}>
                   From KL Saini Cricket Stadium, take Madhyam Marg and turn into Kaveri Path. The clinic is on the left, at 21/280.

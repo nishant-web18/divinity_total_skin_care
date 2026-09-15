@@ -58,10 +58,13 @@ export function TopNav(props) {
         style={{
           maxWidth: "var(--page-max-width)",
           margin: "0 auto",
-          padding: compact ? "16px var(--page-gutter)" : "24px var(--page-gutter)",
+          padding: compact ? "8px var(--page-gutter)" : "24px var(--page-gutter)",
           display: "flex",
           alignItems: "center",
-          flexWrap: "wrap",
+          /* nowrap on purpose: the wordmark must shrink and wrap its own text
+             rather than push the menu toggle onto a second row, which would make
+             the sticky header twice as tall on a 320px screen. */
+          flexWrap: "nowrap",
           gap: compact ? "var(--spacing-12)" : "var(--spacing-32)",
         }}
       >
@@ -116,9 +119,15 @@ export function TopNav(props) {
               {(props.secondary && props.secondary.label) || "Log in"}
             </a>
           )}
-          <Button variant="nav" size="md" onClick={props.onCta}>
-            {props.ctaLabel || "Book a Call"}
-          </Button>
+          {/* Compact keeps only the menu toggle: the fixed conversion bar already
+              carries booking at every scroll position, and a second CTA in the
+              header pushed the sticky chrome past its 20%-of-screen budget. The
+              action itself moves into the panel below, never disappears. */}
+          {compact ? null : (
+            <Button variant="nav" size="md" onClick={props.onCta}>
+              {props.ctaLabel || "Book a Call"}
+            </Button>
+          )}
           {compact ? (
             <button
               type="button"
@@ -178,6 +187,14 @@ export function TopNav(props) {
               {props.locale || "EN"}
             </span>
           )}
+          <Button
+            variant="nav"
+            size="md"
+            style={{ marginTop: "var(--spacing-8)" }}
+            onClick={() => { setOpen(false); if (props.onCta) props.onCta(); }}
+          >
+            {props.ctaLabel || "Book a Call"}
+          </Button>
         </nav>
       ) : null}
     </header>
