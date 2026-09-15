@@ -56,9 +56,8 @@ photography — has its slot removed, not marked. Fill `clinic.js` and it reappe
 
 ## Still needed from the client
 
-- **Written confirmation of the phone number.** `+91 90017 64046` comes from three
-  directory pages that agree, but nothing client-confirmed — verify before any ad spend
-  points at it, and check it is WhatsApp-enabled.
+- **Confirm `+91 95711 33151` is WhatsApp-enabled.** It is the number the call button,
+  the WhatsApp deep link and the schema all point at. Sending one test message settles it.
 - **Day-by-day OPD hours**, and whether Sunday is open.
 - **Registration numbers in writing** for both doctors.
 - **Follow-up fee and indicative procedure prices.**

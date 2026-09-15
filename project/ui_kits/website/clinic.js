@@ -30,15 +30,14 @@ export const CLINIC = {
   lat: 26.8754787,
   lng: 75.7529494,
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=26.8754787%2C75.7529494",
-  /* Sourced from DialMeNow and two Jaipur Medical Directory pages, which agree.
-     TODO: still get written confirmation from the clinic, and check the number is
-     WhatsApp-enabled, before any spend points at it. */
-  phoneDisplay: "+91 90017 64046",
-  telUrl: "tel:+919001764046",
+  /* The clinic's front-desk number. Every call and WhatsApp entry point on the site
+     reads these fields, so this is the only place it is written down. */
+  phoneDisplay: "+91 95711 33151",
+  telUrl: "tel:+919571133151",
   landlineDisplay: "0141-6999975",
   landlineTelUrl: "tel:+911416999975",
   whatsappUrl:
-    "https://wa.me/919001764046?text=" +
+    "https://wa.me/919571133151?text=" +
     encodeURIComponent("Namaste, I'd like to book an appointment at Divinity Total Skin Care."),
   /* Directory profiles the clinic already owns. Used in the footer and as schema
      sameAs, so Google can tie the site to the listings that carry the reviews. */
