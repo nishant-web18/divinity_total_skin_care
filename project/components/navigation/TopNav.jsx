@@ -71,6 +71,7 @@ export function TopNav(props) {
         <a
           href={props.brandHref || "#"}
           onClick={props.onBrandClick}
+          aria-label={props.brandLabel}
           style={{
             fontSize: "var(--text-subheading)",
             fontWeight: "var(--font-weight-bold)",

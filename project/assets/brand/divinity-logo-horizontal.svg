@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 545 170" role="img" aria-label="Divinity Total Skin Care">
+  <title>Divinity Total Skin Care</title>
+  <g id="mark" transform="translate(-16.9,34) scale(0.448)">
+    <path fill="#1B3A5F" d="M60 126 C 158 52, 300 16, 462 20 C 320 40, 184 80, 84 136 Z"/>
+    <path fill="#2E6FB7" d="M76 156 C 168 92, 296 62, 442 66 C 314 82, 196 116, 100 166 Z"/>
+    <path fill="#1CADE4" d="M94 186 C 178 130, 292 104, 422 108 C 306 122, 204 152, 118 196 Z"/>
+    <path fill="#A5DCF0" d="M112 216 C 190 166, 288 144, 402 148 C 300 160, 212 186, 136 226 Z"/>
+  </g>
+  <text id="wmh" x="212" y="112" text-anchor="start"
+        font-family="'DM Sans','Poppins','Montserrat',system-ui,sans-serif"
+        font-size="78" font-weight="700" letter-spacing="-1.6" fill="#1B3A5F">div&#x131;nity</text>
+  <path id="crossh" fill="#EE4036" transform="translate(340.3,17.8) scale(0.66)"
+        d="M0 0 h13 v-13 h13 v13 h13 v13 h-13 v13 h-13 v-13 h-13 Z"/>
+  <text x="214" y="148" text-anchor="start"
+        font-family="'DM Sans',system-ui,sans-serif"
+        font-size="19.5" font-weight="600" letter-spacing="2.9" fill="#29ABE2">Total Skin Care</text>
+</svg>

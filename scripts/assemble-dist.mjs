@@ -15,8 +15,11 @@ await mkdir(OUT, { recursive: true });
 
 const html = (await readFile(`${SRC}/index.html`, "utf8"))
   .replace('href="../../styles.css"', 'href="./styles.css"')
+  .replace('href="../../assets/brand/favicon.svg"', 'href="./favicon.svg"')
   .replace('src="./dist/app.js"', 'src="./app.js"');
 await writeFile(`${OUT}/index.html`, html);
+
+await cp("project/assets/brand/favicon.svg", `${OUT}/favicon.svg`);
 
 await cp(`${SRC}/dist/app.js`, `${OUT}/app.js`);
 await cp(`${SRC}/dist/app.js.map`, `${OUT}/app.js.map`);

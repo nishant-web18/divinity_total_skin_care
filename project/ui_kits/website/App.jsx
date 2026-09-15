@@ -1,5 +1,6 @@
 import React from "react";
 import { TopNav } from "../../components/navigation/TopNav.jsx";
+import { Logo } from "../../components/brand/Logo.jsx";
 import { HomeScreen } from "./HomeScreen.jsx";
 import { TreatmentsScreen } from "./TreatmentsScreen.jsx";
 import { DoctorsScreen } from "./DoctorsScreen.jsx";
@@ -47,7 +48,8 @@ export function App() {
   return (
     <div style={{ background: "var(--surface-page-canvas)", minHeight: "100dvh", paddingBottom: "var(--sticky-bar-clearance)" }}>
       <TopNav
-        brand={CLINIC.name}
+        brand={<Logo height={38} style={{ display: "block", maxWidth: "100%" }} />}
+        brandLabel={CLINIC.name}
         links={NAV_LINKS}
         active={page === "Home" ? undefined : page}
         onBrandClick={(e) => { e.preventDefault(); navigate("Home"); }}

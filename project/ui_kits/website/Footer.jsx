@@ -1,4 +1,5 @@
 import React from "react";
+import { Logo } from "../../components/brand/Logo.jsx";
 import { CLINIC, TREATMENT_GROUPS, NAV_LINKS } from "./clinic.js";
 
 export function Footer(props) {
@@ -10,7 +11,7 @@ export function Footer(props) {
     <footer style={{ background: "var(--color-cloud-gray)", padding: "var(--spacing-64) var(--page-gutter) var(--spacing-40)", fontFamily: "var(--font-dm-sans)", fontFeatureSettings: "var(--font-features)" }}>
       <div style={{ maxWidth: "var(--page-max-width)", margin: "0 auto", display: "flex", flexWrap: "wrap", gap: "var(--spacing-64)" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-12)", minWidth: 0, flex: "1 1 240px" }}>
-          <span style={{ fontSize: "var(--text-subheading)", fontWeight: 700, letterSpacing: "var(--tracking-tight)", color: "var(--color-canopy-green)" }}>{CLINIC.name}</span>
+          <Logo height={52} style={{ display: "block", maxWidth: "100%" }} />
           <address style={{ fontStyle: "normal", fontSize: "var(--text-body-sm)", lineHeight: 1.5, color: "var(--color-graphite)" }}>
             {CLINIC.addressLines.map((l) => (
               <div key={l}>{l}</div>
