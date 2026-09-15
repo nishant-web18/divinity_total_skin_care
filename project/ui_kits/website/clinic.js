@@ -22,8 +22,13 @@ export const CLINIC = {
   /* Brief §1: every directory number needs confirming, and the IndiaMART number is a
      masked virtual line. One WhatsApp-enabled number replaces this placeholder. */
   phoneDisplay: "+91 XXXXX XXXXX",
+  /* TODO: client to confirm number. Every call/WhatsApp button on the site reads these
+     three fields — fill them here and nothing else needs touching. telUrl stays null
+     until then so the call buttons are inert rather than dialling a wrong number. */
+  telUrl: null,
   whatsappUrl:
-    "https://wa.me/91XXXXXXXXXX?text=Hi%2C%20I%20want%20to%20book%20an%20appointment%20at%20Divinity%20Total%20Skin%20Care",
+    "https://wa.me/91XXXXXXXXXX?text=" +
+    encodeURIComponent("Namaste, I'd like to book an appointment at Divinity Total Skin Care."),
   hindi: {
     tagline: "मनसरोवर, जयपुर में त्वचा, बाल और लेज़र क्लीनिक — 2013 से",
     whatsapp: "अपॉइंटमेंट के लिए व्हाट्सएप करें",

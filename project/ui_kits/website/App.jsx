@@ -9,6 +9,8 @@ import { ContactScreen } from "./ContactScreen.jsx";
 import { BookingDialog } from "./BookingDialog.jsx";
 import { Footer } from "./Footer.jsx";
 import { StickyBar } from "./Chrome.jsx";
+import { MobileActionStack } from "./MobileActionStack.jsx";
+import { useIsMobile } from "../../components/hooks/useMediaQuery.js";
 import { CLINIC, NAV_LINKS } from "./clinic.js";
 
 const screens = {
@@ -28,6 +30,7 @@ const pageForHash = (hash) => pages.find((p) => slugs[p] === String(hash || "").
 export function App() {
   const [page, setPage] = React.useState(() => pageForHash(window.location.hash));
   const [booking, setBooking] = React.useState(false);
+  const isMobile = useIsMobile();
 
   React.useEffect(() => {
     const onHash = () => { setPage(pageForHash(window.location.hash)); window.scrollTo(0, 0); };
@@ -46,7 +49,7 @@ export function App() {
   const Screen = screens[page] || HomeScreen;
 
   return (
-    <div style={{ background: "var(--surface-page-canvas)", minHeight: "100dvh", paddingBottom: "var(--sticky-bar-clearance)" }}>
+    <div style={{ background: "var(--surface-page-canvas)", minHeight: "100dvh", paddingBottom: isMobile ? 0 : "var(--sticky-bar-clearance)" }}>
       <TopNav
         brand={<Logo height={46} style={{ display: "block", maxWidth: "100%" }} />}
         brandLabel={CLINIC.name}
@@ -62,7 +65,11 @@ export function App() {
       />
       <Screen onNavigate={navigate} onBook={() => setBooking(true)} />
       <Footer onNavigate={navigate} />
-      <StickyBar phone={CLINIC.phoneDisplay} hindi={CLINIC.hindi.whatsapp} whatsappUrl={CLINIC.whatsappUrl} mapsUrl={CLINIC.mapsUrl} />
+      {isMobile ? (
+        <MobileActionStack page={page} hidden={booking} whatsappUrl={CLINIC.whatsappUrl} mapsUrl={CLINIC.mapsUrl} telUrl={CLINIC.telUrl} />
+      ) : (
+        <StickyBar phone={CLINIC.phoneDisplay} hindi={CLINIC.hindi.whatsapp} whatsappUrl={CLINIC.whatsappUrl} mapsUrl={CLINIC.mapsUrl} />
+      )}
       <BookingDialog open={booking} onClose={() => setBooking(false)} />
     </div>
   );

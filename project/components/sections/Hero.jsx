@@ -50,7 +50,9 @@ export function Hero(props) {
               {props.body}
             </p>
           ) : null}
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--spacing-12)", marginTop: "var(--spacing-8)" }}>
+          {/* Marked so the floating action stack can watch it: while these CTAs are on
+              screen the stack stays hidden rather than duplicating them. */}
+          <div data-hero-cta="" style={{ display: "flex", flexWrap: "wrap", gap: "var(--spacing-12)", marginTop: "var(--spacing-8)" }}>
             {props.primaryLabel ? (
               <Button variant="primary" size="lg" onClick={props.onPrimary}>
                 {props.primaryLabel}

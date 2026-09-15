@@ -36,6 +36,14 @@
     [data-sticky-bar] { display: none; }
     body { --sticky-bar-clearance: 0px; }
   }
+  /* Mobile carousel strips: hide the scrollbar chrome without disabling scrolling.
+     The snap behaviour itself is set inline alongside the rest of the layout. */
+  .ds-strip { scrollbar-width: none; -ms-overflow-style: none; }
+  .ds-strip::-webkit-scrollbar { display: none; }
+  .ds-strip:focus-visible { outline: 2px solid var(--color-leaf-bright); outline-offset: 2px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .ds-strip { scroll-behavior: smooth; }
+  }
   /* The FAQ uses <details>; suppress the native marker in favour of the +/x glyph. */
   summary::-webkit-details-marker { display: none; }
   summary::marker { content: ""; }
